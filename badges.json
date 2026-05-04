@@ -1,0 +1,148 @@
+{
+  "badges": [
+    {
+      "id": "acrylic_master",
+      "name": "Acrylic Master",
+      "category": "path",
+      "image": "badge/acrylic.png",
+      "requirement": "Complete 3 painting summatives",
+      "tooltipEarned": "Acrylic Master: Awarded to {name} for completing 3 painting summatives",
+      "tooltipShadow": "Acrylic Master: Complete 3 painting summatives to earn",
+      "checkFunction": "checkPathMastery",
+      "params": { "path": "Painter Path", "count": 3 }
+    },
+    {
+      "id": "watercolor_master",
+      "name": "Watercolor Master",
+      "category": "path",
+      "image": "badge/watercolor.png",
+      "requirement": "Complete 3 watercolor summatives",
+      "tooltipEarned": "Watercolor Master: Awarded to {name} for completing 3 watercolor summatives",
+      "tooltipShadow": "Watercolor Master: Complete 3 watercolor summatives to earn",
+      "checkFunction": "checkPathMastery",
+      "params": { "path": "Watercolor Path", "count": 3 }
+    },
+    {
+      "id": "3d_master",
+      "name": "3D Master",
+      "category": "path",
+      "image": "badge/3d.png",
+      "requirement": "Complete 3 3D summatives",
+      "tooltipEarned": "3D Master: Awarded to {name} for completing 3 3D summatives",
+      "tooltipShadow": "3D Master: Complete 3 3D summatives to earn",
+      "checkFunction": "checkPathMastery",
+      "params": { "path": "3D Path", "count": 3 }
+    },
+    {
+      "id": "sketch_master",
+      "name": "Sketch Master",
+      "category": "path",
+      "image": "badge/sketch.png",
+      "requirement": "Complete 3 sketching summatives",
+      "tooltipEarned": "Sketch Master: Awarded to {name} for completing 3 sketching summatives",
+      "tooltipShadow": "Sketch Master: Complete 3 sketching summatives to earn",
+      "checkFunction": "checkPathMastery",
+      "params": { "path": "Sketcher Path", "count": 3 }
+    },
+    {
+      "id": "color_expert",
+      "name": "Color Theory Expert",
+      "category": "skill",
+      "image": "badge/colour.png",
+      "requirement": "Complete 4 color-focused summatives (any path)",
+      "tooltipEarned": "Color Theory Expert: Awarded to {name} for completing 4 color-focused summatives",
+      "tooltipShadow": "Color Theory Expert: Complete 4 color-focused summatives to earn",
+      "checkFunction": "checkColorExpert",
+      "params": { "count": 4 }
+    },
+    {
+      "id": "perspective_pro",
+      "name": "Perspective Pro",
+      "category": "skill",
+      "image": "badge/perspective.png",
+      "requirement": "Complete the Master of Perspective achievement",
+      "tooltipEarned": "Perspective Pro: Awarded to {name} for completing the Master of Perspective achievement",
+      "tooltipShadow": "Perspective Pro: Complete the Master of Perspective achievement to earn",
+      "checkFunction": "checkPerspectivePro",
+      "params": { "achievement": "The Master of Perspective" }
+    },
+    {
+  "id": "quest_completer",
+  "name": "Quest Completer",
+  "category": "progression",
+  "image": "badge/gold.png", 
+  "progression": true,
+  "levels": [
+    { 
+      "level": "bronze", 
+      "count": 2, 
+      "image": "badge/bronze.png", 
+      "borderClass": "progression-bronze", 
+      "tooltip": "Quest Completer (Bronze): Complete 2 summatives" 
+    },
+    { 
+      "level": "silver", 
+      "count": 4, 
+      "image": "badge/silver.png", 
+      "borderClass": "progression-silver", 
+      "tooltip": "Quest Completer (Silver): Complete 4 summatives" 
+    },
+    { 
+      "level": "gold", 
+      "count": 6, 
+      "image": "badge/gold.png",
+      "borderClass": "progression-gold", 
+      "tooltip": "Quest Completer (Gold): Complete 6 summatives" 
+    },
+    { 
+      "level": "diamond", 
+      "count": 8, 
+      "image": "badge/diamond.png",
+      "borderClass": "progression-diamond", 
+      "tooltip": "Quest Completer (Diamond): Complete 8 summatives" 
+    }
+  ],
+  "tooltipShadow": "Quest Completer: Complete summatives to earn badges"
+},
+    {
+      "id": "community_master",
+      "name": "Community Master",
+      "category": "teacher",
+      "image": "badge/help.png",
+      "requirement": "Awarded by teacher for community help",
+      "tooltipEarned": "Community Master: Awarded to {name} for helping the community",
+      "tooltipShadow": "Community Master: Teacher-awarded for helping the community",
+      "teacherAwarded": true
+    },
+    {
+      "id": "competition_master",
+      "name": "Competition Master",
+      "category": "teacher",
+      "image": "badge/competition.png",
+      "requirement": "Participate in 3 art competitions",
+      "tooltipEarned": "Competition Master: Awarded to {name} for participating in 3 art competitions",
+      "tooltipShadow": "Competition Master: Teacher-awarded for participating in 3 art competitions",
+      "teacherAwarded": true
+    },
+    {
+      "id": "art_trip_master",
+      "name": "Art Trip Master",
+      "category": "teacher",
+      "image": "badge/trip.png",
+      "requirement": "Participate in art trips",
+      "tooltipEarned": "Art Trip Master: Awarded to {name} for participating in art trips",
+      "tooltipShadow": "Art Trip Master: Teacher-awarded for participating in art trips",
+      "teacherAwarded": true
+    },
+    {
+      "id": "history_master",
+      "name": "History Master",
+      "category": "teacher",
+      "image": "badge/museum.png",
+      "requirement": "Visit art museums",
+      "tooltipEarned": "History Master: Awarded to {name} for visiting art museums",
+      "tooltipShadow": "History Master: Teacher-awarded for visiting art museums",
+      "teacherAwarded": true
+    }
+  ]
+}

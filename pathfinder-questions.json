@@ -1,0 +1,484 @@
+{
+  "intro": "<h2>The Complete Pathfinder's Questionnaire</h2><p style='color: aqua; font-style: italic; font-size: 0.9em;'>Find your summative Quest</p><p>Greetings, aspiring artist! Before you embark on your next great challenge, the Council of Masters seeks to understand your inner drive. Answer the following questions honestly. Your choices will reveal the trial for which you are best suited.</p>",
+  "questions": [
+    {
+      "id": 1,
+      "text": "What medium calls to you most right now?",
+      "note": "(This establishes the primary path.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "Acrylic paint – I love its versatility and bold colors.",
+          "score": {
+            "quest4": 1, "quest11": 1, "quest16": 1, "quest17": 1, 
+            "quest25": 1, "quest27": 1, "quest30": 1, "quest35": 1,
+            "quest36": 1, "quest41": 1, "quest50": 1, "quest53": 1,
+            "quest54": 1, "quest56": 1, "quest57": 1, "quest58": 1,
+            "quest66": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "Watercolor – I'm drawn to its transparency, flow, and delicacy.",
+          "score": {
+            "quest16": 1, "quest17": 1, "quest22": 1, "quest23": 1,
+            "quest24": 1, "quest25": 1, "quest26": 1, "quest27": 1,
+            "quest49": 1, "quest50": 1, "quest65": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "Pencil/ink/drawing – I find joy in line, value, and illustration.",
+          "score": {
+            "quest30": 1, "quest41": 1, "quest53": 1, "quest54": 1,
+            "quest55": 1, "quest56": 1, "quest57": 1, "quest58": 1,
+            "quest59": 1, "quest60": 1, "quest61": 1, "quest62": 1,
+            "quest63": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "3D materials (clay, wire, foam, wool) – I want to build something I can hold.",
+          "score": {
+            "quest53": 1, "quest54": 1, "quest56": 1, "quest57": 1,
+            "quest58": 1, "quest59": 1, "quest60": 1, "quest61": 1,
+            "quest62": 1, "quest63": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "Mixed media – I don't want to be limited to just one thing.",
+          "score": {
+            "quest68": 1, "quest70": 1, "quest71": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "What subject excites you most to explore?",
+      "note": "(This identifies the primary subject matter.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "The human face – portraits, expressions, identity.",
+          "score": {
+            "quest69": 1, "quest27": 1, "quest53": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "Living creatures – animals, fur, feathers, beasts.",
+          "score": {
+            "quest35": 1, "quest55": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "The world around me – landscapes, cities, architecture.",
+          "score": {
+            "quest66": 1, "quest17": 1, "quest25": 1, "quest58": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "Objects and arrangements – still life, composition, light on form.",
+          "score": {
+            "quest11": 1, "quest16": 1, "quest41": 1, "quest56": 1, "quest70": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "Stories and characters – narrative, action, manga.",
+          "score": {
+            "quest30": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "F",
+          "text": "Pure expression – abstraction, color, emotion.",
+          "score": {
+            "quest36": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "What's your relationship with reference material?",
+      "note": "(This reveals observation vs. imagination.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "I want to faithfully recreate what I see – it's a beautiful challenge.",
+          "score": {
+            "quest11": 1, "quest16": 1, "quest17": 1, "quest41": 1, "quest71": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "I use reference as inspiration, but I always make it my own.",
+          "score": {
+            "quest4": 1, "quest30": 1, "quest35": 1, "quest50": 1, "quest69": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "I prefer to invent from imagination – reality is just a starting point.",
+          "score": {
+            "quest36": 1, "quest53": 1, "quest57": 1, "quest58": 1, "quest70": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "I love working from cultural or historical references.",
+          "score": {
+            "quest50": 1, "quest54": 1, "quest56": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "What's your favorite part of the creative process?",
+      "note": "(This indicates working style.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "The planning and sketching – getting the foundation perfect.",
+          "score": {
+            "quest41": 1, "quest66": 1, "quest25": 1, "quest58": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "The experimentation – mixing colors, testing techniques, happy accidents.",
+          "score": {
+            "quest4": 1, "quest36": 1, "quest70": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "The detailed refinement – those final touches that bring it to life.",
+          "score": {
+            "quest69": 1, "quest27": 1, "quest35": 1, "quest53": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "The construction – building something structural and solid.",
+          "score": {
+            "quest57": 1, "quest58": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "The storytelling – making sure the narrative comes through.",
+          "score": {
+            "quest30": 1, "quest72": 1, "quest56": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "How do you feel about color?",
+      "note": "(This helps narrow down specific techniques.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "I want to master color – mixing, harmony, capturing light.",
+          "score": {
+            "quest4": 1, "quest11": 1, "quest16": 1, "quest17": 1, "quest69": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "I prefer limited palettes – value and mood matter more than hue.",
+          "score": {
+            "quest30": 1, "quest41": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "I'm drawn to specific cultural/traditional palettes (like blue-green landscapes).",
+          "score": {
+            "quest50": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "Color is about emotion and expression for me – the bolder, the better.",
+          "score": {
+            "quest36": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "I'm more focused on texture and material than color.",
+          "score": {
+            "quest53": 1, "quest54": 1, "quest57": 1, "quest68": 1, "quest71": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "text": "What scale of project feels right to you now?",
+      "note": "(This indicates time commitment and complexity.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "A focused, single subject study (a face, an animal, an object).",
+          "score": {
+            "quest11": 1, "quest35": 1, "quest41": 1, "quest53": 1, "quest69": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "A complete scene with depth and atmosphere.",
+          "score": {
+            "quest4": 1, "quest16": 1, "quest17": 1, "quest66": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "A multi-part or sequential project (multiple pages, multiple pieces).",
+          "score": {
+            "quest30": 1, "quest56": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "A complex, large-scale build (cosplay, architecture).",
+          "score": {
+            "quest58": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "A conceptual transformation project.",
+          "score": {
+            "quest70": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "text": "What artistic movement or style inspires you most?",
+      "note": "(This connects to art history and specific quests.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "Classical realism / Old Masters.",
+          "score": {
+            "quest11": 1, "quest16": 1, "quest69": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "Impressionism / Post-Impressionism.",
+          "score": {
+            "quest4": 1, "quest17": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "Modern art / Abstract Expressionism.",
+          "score": {
+            "quest36": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "Manga / Anime / Illustration.",
+          "score": {
+            "quest30": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "Traditional Eastern art (Chinese, Japanese).",
+          "score": {
+            "quest50": 1
+          }
+        },
+        {
+          "letter": "F",
+          "text": "Cultural / Indigenous art traditions.",
+          "score": {
+            "quest54": 1, "quest56": 1
+          }
+        },
+        {
+          "letter": "G",
+          "text": "Contemporary / Conceptual design.",
+          "score": {
+            "quest70": 1, "quest71": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "text": "How do you prefer to work with others?",
+      "note": "(This identifies solo vs. team preferences.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "I work best alone – I need full creative control.",
+          "score": {
+            "quest4": 1, "quest11": 1, "quest16": 1, "quest17": 1, "quest25": 1,
+            "quest27": 1, "quest30": 1, "quest35": 1, "quest36": 1, "quest41": 1,
+            "quest49": 1, "quest50": 1, "quest53": 1, "quest54": 1, "quest55": 1,
+            "quest56": 1, "quest58": 1, "quest59": 1, "quest60": 1, "quest61": 1,
+            "quest62": 1, "quest63": 1, "quest65": 1, "quest66": 1, "quest69": 1,
+            "quest70": 1, "quest71": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "I enjoy collaborating and bouncing ideas off others.",
+          "score": {
+            "quest57": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "I'm open to either – depends on the project.",
+          "score": {}
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "text": "What's the most important quality in your finished piece?",
+      "note": "(This reveals their core artistic value.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "Technical accuracy – it should look real/proportional.",
+          "score": {
+            "quest11": 1, "quest16": 1, "quest41": 1, "quest53": 1, "quest69": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "Emotional impact – it should make someone feel something.",
+          "score": {
+            "quest4": 1, "quest27": 1, "quest36": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "Creative originality – it should be unique and unexpected.",
+          "score": {
+            "quest30": 1, "quest57": 1, "quest70": 1, "quest71": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "Craftsmanship – it should be well-made and durable.",
+          "score": {
+            "quest54": 1, "quest56": 1, "quest58": 1, "quest68": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "Cultural authenticity – it should honor its inspiration.",
+          "score": {
+            "quest50": 1, "quest54": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "What challenge do you want to grow in most?",
+      "note": "(This identifies their learning edge.)",
+      "answers": [
+        {
+          "letter": "A",
+          "text": "Seeing and capturing value and light accurately.",
+          "score": {
+            "quest11": 1, "quest16": 1, "quest41": 1
+          }
+        },
+        {
+          "letter": "B",
+          "text": "Understanding and applying color theory.",
+          "score": {
+            "quest4": 1, "quest17": 1, "quest36": 1, "quest69": 1
+          }
+        },
+        {
+          "letter": "C",
+          "text": "Mastering a specific medium's techniques.",
+          "score": {
+            "quest35": 1, "quest53": 1, "quest57": 1, "quest71": 1
+          }
+        },
+        {
+          "letter": "D",
+          "text": "Composition and visual storytelling.",
+          "score": {
+            "quest30": 1, "quest56": 1, "quest72": 1
+          }
+        },
+        {
+          "letter": "E",
+          "text": "Structural thinking and 3D construction.",
+          "score": {
+            "quest58": 1, "quest68": 1, "quest70": 1
+          }
+        },
+        {
+          "letter": "F",
+          "text": "Cultural research and traditional techniques.",
+          "score": {
+            "quest50": 1, "quest54": 1
+          }
+        }
+      ]
+    }
+  ],
+  "resultMessages": [
+    {
+      "keywords": ["portrait", "face", "expression", "quest69", "quest27", "quest53"],
+      "message": "You're drawn to the human face and want to master expression, proportion, and technical control. Whether through acrylic, watercolor, or clay, capturing likeness and emotion is your path forward. Choose the medium that calls to you most right now!"
+    },
+    {
+      "keywords": ["landscape", "architecture", "environment", "quest66", "quest17", "quest25", "quest58"],
+      "message": "The world around you is your canvas. You see beauty in spaces, places, and the play of light on structures. Your path leads to capturing atmosphere, depth, and the spirit of place. From sweeping vistas to intricate architectural details, your art will transport viewers to another world."
+    },
+    {
+      "keywords": ["still life", "object", "arrangement", "quest11", "quest16", "quest41", "quest56", "quest70"],
+      "message": "You find magic in the ordinary. The way light falls on an object, the composition of everyday things—these are your subjects. Your path develops your observation skills, your understanding of form, and your ability to find meaning in arrangement and detail."
+    },
+    {
+      "keywords": ["animal", "creature", "beast", "quest35", "quest55"],
+      "message": "The living world—fur, feather, and form—calls to you. Capturing the essence of creatures requires both observation and empathy. Your path will develop your ability to convey life, movement, and the unique spirit of each subject."
+    },
+    {
+      "keywords": ["story", "narrative", "manga", "quest30", "quest72"],
+      "message": "You're a visual storyteller at heart. Each image holds a tale, each composition advances a narrative. Your path focuses on sequential art, character development, and the power of images to tell stories without words."
+    },
+    {
+      "keywords": ["abstract", "emotion", "expression", "quest36"],
+      "message": "For you, art is about feeling, not representation. Color, form, and gesture speak louder than recognizable subjects. Your path explores pure expression—art that communicates directly through its visual elements."
+    },
+    {
+      "keywords": ["3D", "sculpture", "build", "construction", "quest53", "quest54", "quest56", "quest57", "quest58", "quest68"],
+      "message": "You think in three dimensions. Your art isn't just seen—it's experienced in space. Whether through clay, found objects, or constructed forms, your path develops your understanding of volume, structure, and the tactile qualities of materials."
+    },
+    {
+      "keywords": ["cultural", "traditional", "historical", "quest50", "quest54", "quest56"],
+      "message": "You respect the wisdom of those who came before. Your art connects you to traditions, cultures, and histories that deserve to be honored and continued. Your path involves deep research and respectful interpretation of traditional techniques and themes."
+    },
+    {
+      "keywords": ["mixed media", "experimental", "quest68", "quest70", "quest71"],
+      "message": "You refuse to be boxed in by a single medium. Your art combines, transforms, and transcends traditional boundaries. Your path is one of innovation—finding new ways to express ideas through unexpected combinations and approaches."
+    }
+  ]
+}
