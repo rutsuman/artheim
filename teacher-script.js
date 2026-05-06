@@ -3299,7 +3299,6 @@ async function confirmDeleteStudents() {
     const panel = document.getElementById('delete-confirm-panel');
     if (panel) panel.style.display = 'none';
 }
-}
 // Load class settings from database
 async function loadClassSettings() {
     const settings = {};
