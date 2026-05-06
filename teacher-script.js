@@ -1293,6 +1293,20 @@ async function loadRubricForQuest(questId, quest, questGrades, detailsDiv, userI
         return;
     }
     
+    // Get teacher's selected standards for this quest
+    const auth = await checkTeacherAuth();
+    let selectedStandards = null;
+    
+    if (auth) {
+        const { data } = await window.supabase
+            .from('teacher_quest_standards')
+            .select('selected_standards')
+            .eq('teacher_id', auth.teacher.id)
+            .eq('quest_id', questId)
+            .single();
+        selectedStandards = data?.selected_standards;
+    }
+    
     // Check which format we have
     const isIB = quest.rubric.criteria && Array.isArray(quest.rubric.criteria);
     const isNCAS = quest.rubric.standards && Array.isArray(quest.rubric.standards);
@@ -1322,8 +1336,17 @@ async function loadRubricForQuest(questId, quest, questGrades, detailsDiv, userI
         gradeInputMax = 8;
         headerLabel = 'Assessment Objective';
         inputType = 'text';
-    } else {
-        rubricContainer.innerHTML = '<p>No standards, criteria, or assessment objectives found for this quest.</p>';
+    }
+    
+    // Filter items based on selected standards
+    if (selectedStandards && selectedStandards.length > 0) {
+        itemsToShow = itemsToShow.filter(item => 
+            selectedStandards.includes(item.code)
+        );
+    }
+    
+    if (itemsToShow.length === 0) {
+        rubricContainer.innerHTML = '<p>No standards selected for this quest.</p>';
         return;
     }
     
@@ -1370,7 +1393,7 @@ async function loadRubricForQuest(questId, quest, questGrades, detailsDiv, userI
         }
         
         html += `</td>
-        </tr>`;
+            </tr>`;
     });
     
     html += `</tbody>
