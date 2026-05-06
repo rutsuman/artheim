@@ -3224,14 +3224,12 @@ function createDeletePanel() {
 async function confirmDeleteStudents() {
     if (selectedStudentsForDelete.size === 0) return;
     
-    // Verify teacher password
     const isValid = await verifyTeacherPassword();
     if (!isValid) {
         alert("Password verification failed. Deletion cancelled.");
         return;
     }
     
-    // Second confirmation
     const confirmMessage = confirm(`⚠️ WARNING: You are about to delete ${selectedStudentsForDelete.size} student(s). This action CANNOT be undone.\n\nAll quest data, grades, and artwork will be permanently deleted.\n\nClick OK to confirm.`);
     if (!confirmMessage) return;
     
@@ -3240,7 +3238,6 @@ async function confirmDeleteStudents() {
     const SUPABASE_URL = 'https://qzxvwoyigrrpdywvhckk.supabase.co';
     
     for (const studentId of selectedStudentsForDelete) {
-        // First delete from profiles (this triggers cascade to progress, works, etc.)
         const { error: profileError } = await window.supabase
             .from('profiles')
             .delete()
@@ -3252,7 +3249,6 @@ async function confirmDeleteStudents() {
             continue;
         }
         
-        // Then delete the auth user via Edge Function
         try {
             const { data: { session } } = await window.supabase.auth.getSession();
             const response = await fetch(`${SUPABASE_URL}/functions/v1/delete-user`, {
@@ -3264,9 +3260,8 @@ async function confirmDeleteStudents() {
                 body: JSON.stringify({ studentUserId: studentId })
             });
             
-            const result = await response.json();
-            
             if (!response.ok) {
+                const result = await response.json();
                 console.error("Error deleting auth user:", result.error);
                 errorCount++;
             } else {
@@ -3280,7 +3275,6 @@ async function confirmDeleteStudents() {
     
     alert(`Deleted ${deletedCount} student(s). ${errorCount} error(s).`);
     
-    // Clear selection and exit delete mode
     deleteMode = false;
     selectedStudentsForDelete.clear();
     
@@ -3290,13 +3284,11 @@ async function confirmDeleteStudents() {
         deleteBtn.textContent = '🗑️ Delete Students';
     }
     
-    // Refresh views
     await loadClasses();
     await renderClassManagementView();
     await renderClassAccordion();
     await loadAllStudents();
     
-    // Hide delete panel
     const panel = document.getElementById('delete-confirm-panel');
     if (panel) panel.style.display = 'none';
 }
