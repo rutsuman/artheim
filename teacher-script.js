@@ -3238,16 +3238,8 @@ async function confirmDeleteStudents() {
     const SUPABASE_URL = 'https://qzxvwoyigrrpdywvhckk.supabase.co';
     
     for (const studentId of selectedStudentsForDelete) {
-        const { error: profileError } = await window.supabase
-            .from('profiles')
-            .delete()
-            .eq('id', studentId);
-        
-        if (profileError) {
-            console.error("Error deleting student profile:", profileError);
-            errorCount++;
-            continue;
-        }
+        // First delete the auth user via Edge Function (before profile is deleted)
+        let authDeleted = false;
         
         try {
             const { data: { session } } = await window.supabase.auth.getSession();
@@ -3265,11 +3257,26 @@ async function confirmDeleteStudents() {
                 console.error("Error deleting auth user:", result.error);
                 errorCount++;
             } else {
-                deletedCount++;
+                authDeleted = true;
             }
         } catch (err) {
             console.error("Error calling delete-user function:", err);
             errorCount++;
+        }
+        
+        // Only delete from profiles if auth deletion succeeded
+        if (authDeleted) {
+            const { error: profileError } = await window.supabase
+                .from('profiles')
+                .delete()
+                .eq('id', studentId);
+            
+            if (profileError) {
+                console.error("Error deleting student profile:", profileError);
+                errorCount++;
+            } else {
+                deletedCount++;
+            }
         }
     }
     
@@ -3291,6 +3298,7 @@ async function confirmDeleteStudents() {
     
     const panel = document.getElementById('delete-confirm-panel');
     if (panel) panel.style.display = 'none';
+}
 }
 // Load class settings from database
 async function loadClassSettings() {
