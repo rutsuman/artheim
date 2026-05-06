@@ -3237,18 +3237,44 @@ async function confirmDeleteStudents() {
     
     let deletedCount = 0;
     let errorCount = 0;
+    const SUPABASE_URL = 'https://qzxvwoyigrrpdywvhckk.supabase.co';
     
     for (const studentId of selectedStudentsForDelete) {
-        const { error } = await window.supabase
+        // First delete from profiles (this triggers cascade to progress, works, etc.)
+        const { error: profileError } = await window.supabase
             .from('profiles')
             .delete()
             .eq('id', studentId);
         
-        if (error) {
-            console.error("Error deleting student:", error);
+        if (profileError) {
+            console.error("Error deleting student profile:", profileError);
             errorCount++;
-        } else {
-            deletedCount++;
+            continue;
+        }
+        
+        // Then delete the auth user via Edge Function
+        try {
+            const { data: { session } } = await window.supabase.auth.getSession();
+            const response = await fetch(`${SUPABASE_URL}/functions/v1/delete-user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.access_token}`
+                },
+                body: JSON.stringify({ studentUserId: studentId })
+            });
+            
+            const result = await response.json();
+            
+            if (!response.ok) {
+                console.error("Error deleting auth user:", result.error);
+                errorCount++;
+            } else {
+                deletedCount++;
+            }
+        } catch (err) {
+            console.error("Error calling delete-user function:", err);
+            errorCount++;
         }
     }
     
@@ -3273,6 +3299,7 @@ async function confirmDeleteStudents() {
     // Hide delete panel
     const panel = document.getElementById('delete-confirm-panel');
     if (panel) panel.style.display = 'none';
+}
 }
 // Load class settings from database
 async function loadClassSettings() {
