@@ -634,7 +634,7 @@
     "reward": "you got money!!!!",
     "character": "charimage/char13.png",
     "style": "",
-    "prerequisites": ["quest12"],
+    "prerequisites": ["quest73"],
     "timer": {"allottedMinutes": 150}
   },
   "quest14": {
@@ -681,7 +681,7 @@
     "reward": "you got money!!!!",
     "character": "charimage/char14.png",
     "style": "",
-    "prerequisites": ["quest13", "quest12", "quest11"],
+    "prerequisites": ["quest13", "quest73", "quest11"],
     "timer": {"allottedMinutes": 150}
   },
   "quest15": {
@@ -729,7 +729,7 @@
     "reward": "you got money!!!!",
     "character": "charimage/char15.png",
     "style": "",
-    "prerequisites": ["quest13", "quest12", "quest11"],
+    "prerequisites": ["quest13", "quest73", "quest11"],
     "timer": {"allottedMinutes": 150}
   },
   "quest19": {
@@ -2211,55 +2211,6 @@
 
 
     "_Sketcher's_Path_": "---------------------------------",
-
-  "quest12": {
-    "path": ["Sketcher Path"],
-    "difficulty": 1,
-    "title": "The Path of the Endless Line",
-    "rationale": "<h2>The Path of the Endless Line</h2><p><strong>Why it's important:</strong><br>This quest teaches the foundational power of line in drawing. Line is the backbone of all visual art, and mastering it improves confidence, control, and visual rhythm.</p><p><strong>Skills developed:</strong></p><ul><li>Line consistency and flow</li><li>Controlled variation in thickness and pressure</li><li>Gesture and movement through line</li><li>Compositional balance using line density</li><li>Non-representational abstraction and creative restraint</li></ul><p>This quest builds essential mark-making skills and strengthens your ability to create expressive drawings from minimal elements.</p>",
-    "description": "The Order of Wayfinders teaches that every journey begins with a single line. Your task is to create a one-line drawing. It may twist, overlap or thicken, but it must be continuous.",
-    "requirements": [
-      "Use line as the primary element",
-      "Vary line thickness, direction, and density",
-      "Avoid recognizable objects or symbols",
-      "Fill the space with purposeful linear movement"
-    ],
-    "rubric": {
-      "overall": "The Path of the Endless Line",
-      "criteria": [
-        {
-          "code": "B",
-          "name": "Developing Skills",
-          "levels": {
-            "7-8": "Line work is highly controlled, varied, and intentional throughout",
-            "5-6": "Line work is clear and varied, with good control overall",
-            "3-4": "Some line variation, but control is inconsistent",
-            "1-2": "Line is mostly uniform or uncontrolled, with little variation"
-          }
-        },
-        {
-          "code": "C",
-          "name": "Thinking Creatively",
-          "levels": {
-            "7-8": "Composition is balanced and purposeful; line movement feels deliberate and expressive",
-            "5-6": "Composition is mostly balanced with clear intention",
-            "3-4": "Composition is uneven; intent is unclear in several areas",
-            "1-2": "Composition lacks structure; no clear intention"
-          }
-        }
-      ]
-    },
-    "links": [
-      {"type": "Drawing sample", "url": "https://media.posterstore.com/site_images/6862b3b57d2ae084e182626c_1467921930_PS51181-4.jpg"},
-      {"type": "Drawing sample", "url": "https://www.boredpanda.com/blog/wp-content/uploads/2017/05/I-wrote-an-algorithm-for-doodle-style-single-line-drawings-592e843186df2__880.jpg"},
-      {"type": "Drawing sample", "url": "https://www.google.com.hk/search?newwindow=1&sca_esv=9437bc439e189606&rlz=1C1GCEA_enCN1095CN1095&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOha3O1YqG67F0QIhAOFN_ob1xGdzU5Cnyn-oUzTul2B5TfPM2NnDzLPgL0CyoIAnI3TPm3GbtW1P5hWx2UQWr3f83bnlNqgtjIiyxTxr2apVrMYPv4UpjuPG-EMKbXUxSZu21DWv&q=one+line+drawing&sa=X&ved=2ahUKEwiCwJmIrfaRAxU5qVYBHeNhMtYQtKgLegQIExAB&biw=1422&bih=612&dpr=1.35"}
-    ],
-    "reward": "you got money!!!!",
-    "character": "charimage/char12.png",
-    "style": "",
-    "prerequisites": [],
-    "timer": {"allottedMinutes": 75}
-  },
   "quest18": {
     "path": ["Sketcher Path"],
     "difficulty": 1,
