@@ -2525,7 +2525,7 @@
     "reward": "you got money!!!!",
     "character": "charimage/char30a.gif",
     "style": "mvp",
-    "prerequisites": ["quest39", "quest42", "quest43", "quest44", "quest45", "quest46"],
+    "prerequisites": ["quest39", "quest42", "quest43", "quest44", "quest45", "quest46", "quest47"],
     "timer": {"allottedMinutes": 375}
   },
   "quest39": {
