@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Artheim - Teacher Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <!-- Teacher Login Form (shown when not logged in) -->
+    <div id="teacher-login-container" class="welcome-overlay" style="display:flex;">
+        <div class="welcome-scroll">
+            <div class="scroll-body">
+                <h1>Teacher Login</h1>
+                <p>Enter your teacher credentials</p>
+                <input type="email" id="teacher-email" class="auth-input" placeholder="Email" />
+                <input type="password" id="teacher-password" class="auth-input" placeholder="Password" />
+                <p class="auth-link"><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+                <button id="teacher-login-btn" class="auth-btn auth-btn-primary">Login</button>
+                <div id="teacher-login-message" class="auth-message"></div>
+                <p class="auth-link"><a href="/index.html">← Back to Student Login</a></p>
+            </div>
+        </div>
+    </div>
+<!----------------------------- Teacher Dashboard (My Students/Class management and Quests) ------------------------>
+<div id="teacher-dashboard-container" class="teacher-container" style="display:none;">
+    <div class="teacher-header">
+        <h1>🎨 Artheim - Teacher Dashboard</h1>
+        <button id="teacher-logout-btn" class="logout-btn">Logout</button>
+    </div>
+
+    <!-- Main Tabs -->
+    <div class="teacher-main-tabs">
+        <button id="students-main-tab" class="main-tab-btn active">👥 My Students</button>
+        <button id="quests-main-tab" class="main-tab-btn">📚 Quests</button>
+        <button id="classes-main-tab" class="main-tab-btn">🗄️ Class Management</button>
+        <button id="schedule-main-tab" class="main-tab-btn">📅 Schedule</button>
+        <button id="analytics-main-tab" class="main-tab-btn">📊 Analytics</button>
+    </div>
+
+    <!-- Students Tab Content -->
+    <div id="students-main-content" class="main-tab-content active">
+        <div class="students-section">
+            <div class="teacher-student-list">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2>My Students</h2>
+                </div>
+                <div id="class-accordion-container"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Quests Tab Content -->
+    <div id="quests-main-content" class="main-tab-content" style="display: none;">
+        <div class="quests-section">
+            <div class="teacher-quests-list">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="margin: 0;">All Quests</h2>
+                    <button id="create-custom-quest-btn" class="create-custom-quest-btn">➕ Create Quest</button>
+                    <button id="create-contest-btn" class="create-custom-quest-btn" style="background: #5a3829c3; margin-left: 10px;"> ⚔️Create Art Battle</button>
+                </div>
+                <div id="quests-accordion-container" class="quests-accordion-container"></div>
+                
+                <h2 style="margin-top: 30px;">🟢 Active Quests</h2>
+                <div id="active-quests-accordion" class="quests-accordion-container"></div>
+                
+                <h2 style="margin-top: 30px;">✅ Completed Quests</h2>
+                <div id="completed-quests-accordion" class="quests-accordion-container"></div>
+
+                <h2 style="margin-top: 30px;">⚔️ Art Battle Contests</h2>
+                <div id="contests-accordion-container" class="quests-accordion-container"></div>
+            </div>
+        </div>
+    </div> 
+   <!-- Class Management Tab Content-->
+    <div id="classes-main-content" class="main-tab-content" style="display: none;">
+        <div class="class-management-section">
+            <div class="class-mgmt-header">
+                <h3>🗄️ Class Management</h3>
+                    <div class="teacher-code-display">
+                        <span>📋 Your Class Code:</span>
+                        <span id="teacher-class-code" class="class-code-hidden">••••••</span>
+                        <button id="toggle-code-visibility" class="toggle-code-btn" title="Show/Hide code">👁️</button>
+                    </div>
+                <div class="class-mgmt-actions">
+                    <button id="invite-student-btn" class="invite-student-btn">➕ Invite Student</button>
+                    <button id="bulk-assign-mode-btn" class="bulk-assign-btn">✓ Bulk Assign Students</button>
+                    <button id="delete-students-btn" class="delete-students-btn">🗑️ Delete Students</button>   
+                </div>
+            </div>
+            
+            <div id="class-drop-zones" class="class-drop-zones"></div>
+            
+            <div id="bulk-assign-panel" class="bulk-assign-panel" style="display: none;">
+                <p>Select students, then choose a class:</p>
+                <div id="bulk-student-list" class="bulk-student-list"></div>
+                <div class="bulk-assign-controls">
+                    <select id="bulk-class-select" class="bulk-class-select">
+                        <option value="">-- Select Class --</option>
+                    </select>
+                    <button id="bulk-assign-confirm" class="teacher-save-grades-btn">Assign to Class</button>
+                    <button id="bulk-cancel-btn" class="bulk-cancel-btn">Cancel</button>
+                </div>
+            </div>
+            <!--  Class Settings Section -->
+        <div class="class-settings-section">
+            <div class="class-settings-header">
+                <h3>⚙️ Class Settings</h3>
+                <p>Set target quests for each class</p>
+            </div>
+            
+            <div class="class-settings-table-container">
+                <table class="class-settings-table">
+                    <thead>
+                        <tr>
+                            <th>Class Name</th>
+                            <th>Target Formative Quests</th>
+                            <th>Target Summative (MVP) Quests</th>
+                            <th>Class Duration</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="class-settings-tbody">
+                        <!-- Will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="class-settings-actions">
+                <div id="settings-message" class="settings-message"></div>
+                <button id="save-class-settings-btn" class="save-settings-btn">💾 Save All Settings</button>
+            </div>
+        </div>
+            <div class="framework-selector-section">
+            <div class="framework-header">
+                <h3>🎯 Assessment Framework</h3>
+                <p>Select which art standards framework to use for all quests.</p>
+            </div>
+            
+            <div class="framework-options">
+                <label class="framework-option">
+                    <input type="radio" name="framework" value="ncas" checked>
+                    <div class="framework-card">
+                        <span class="framework-icon">🎨</span>
+                        <div class="framework-info">
+                            <strong>NCAS</strong>
+                            <small>National Core Arts Standards (USA)</small>
+                        </div>
+                    </div>
+                </label>
+                
+                <label class="framework-option">
+                    <input type="radio" name="framework" value="ib-myp">
+                    <div class="framework-card">
+                        <span class="framework-icon">🌍</span>
+                        <div class="framework-info">
+                            <strong>IB MYP</strong>
+                            <small>International Baccalaureate Middle Years Programme</small>
+                        </div>
+                    </div>
+                </label>
+                
+                <label class="framework-option">
+                    <input type="radio" name="framework" value="igcse">
+                    <div class="framework-card">
+                        <span class="framework-icon">🇬🇧</span>
+                        <div class="framework-info">
+                            <strong>IGCSE</strong>
+                            <small>Cambridge International General Certificate</small>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="framework-warning" id="framework-warning" style="display: none;">
+                ⚠️ <strong>Warning:</strong> Changing framework will reset all quest grades and student progress. This action cannot be undone.
+            </div>
+            
+            <button id="save-framework-btn" class="save-framework-btn">💾 Save Framework Selection</button>
+            <div id="framework-message" class="framework-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Tab Content -->
+    <div id="schedule-main-content" class="main-tab-content" style="display: none;">
+        <div class="schedule-section">
+            <div class="schedule-header">
+            <h2>📅 Class Schedule</h2>
+                <div>
+                    <input type="file" id="ics-file-input" accept=".ics, .ical" style="display: none;">
+                    <button id="import-ics-btn" class="import-ics-btn">📁 Import from Calendar (ICS)</button>
+                </div>
+            </div>
+            
+            <!-- Class Selector -->
+            <div class="schedule-class-selector">
+                <label>Select Class:</label>
+                <select id="schedule-class-select">
+                    <option value="">-- Select a class --</option>
+                </select>
+            </div>
+            
+            <!-- Calendar View -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month-btn" class="calendar-nav-btn">◀</button>
+                    <h3 id="calendar-month-year">May 2026</h3>
+                    <button id="next-month-btn" class="calendar-nav-btn">▶</button>
+                </div>
+                <div class="calendar-weekdays">
+                    <div class="calendar-weekday">Mon</div>
+                    <div class="calendar-weekday">Tue</div>
+                    <div class="calendar-weekday">Wed</div>
+                    <div class="calendar-weekday">Thu</div>
+                    <div class="calendar-weekday">Fri</div>
+                    <div class="calendar-weekday weekend">Sat</div>
+                    <div class="calendar-weekday weekend">Sun</div>
+                </div>
+                <div id="calendar-grid" class="calendar-grid">
+                    <!-- Calendar dates will be dynamically generated -->
+                </div>
+            </div>
+            
+<!-- Add No-Class Day Panel -->
+<div class="add-no-class-panel">
+    <h3>📅 Manage No-Class Days</h3>
+    
+    <div class="no-class-tabs">
+        <button id="single-day-tab" class="no-class-tab active">Single Day</button>
+        <button id="add-range-tab" class="no-class-tab">Add Date Range</button>
+        <button id="remove-range-tab" class="no-class-tab">Remove Date Range</button>
+    </div>
+    
+    <!-- Single Day Form -->
+    <div id="single-day-form" class="no-class-form">
+        <div class="form-row">
+            <label>Date:</label>
+            <input type="date" id="no-class-date">
+        </div>
+        <div class="form-row">
+            <label>Reason:</label>
+            <input type="text" id="no-class-reason" placeholder="e.g., Holiday, School Event, Teacher Training">
+        </div>
+        <div class="form-row">
+            <label>
+                <input type="checkbox" id="apply-to-all-classes">
+                Apply to all classes
+            </label>
+        </div>
+        <button id="add-no-class-btn" class="add-no-class-btn">➕ Add No-Class Day</button>
+    </div>
+    
+    <!-- Add Date Range Form -->
+    <div id="add-range-form" class="no-class-form" style="display: none;">
+        <div class="form-row">
+            <label>Start Date:</label>
+            <input type="date" id="range-start-date">
+        </div>
+        <div class="form-row">
+            <label>End Date:</label>
+            <input type="date" id="range-end-date">
+        </div>
+        <div class="form-row">
+            <label>Reason:</label>
+            <input type="text" id="range-reason" placeholder="e.g., Winter Break, Spring Break">
+        </div>
+        <div class="form-row">
+            <label>
+                <input type="checkbox" id="range-apply-to-all-classes">
+                Apply to all classes
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                <input type="checkbox" id="exclude-weekends">
+                Exclude weekends (only mark weekdays)
+            </label>
+        </div>
+        <button id="add-range-btn" class="add-no-class-btn">➕ Add Date Range</button>
+    </div>
+    
+    <!-- Remove Date Range Form -->
+    <div id="remove-range-form" class="no-class-form" style="display: none;">
+        <div class="form-row">
+            <label>Start Date:</label>
+            <input type="date" id="remove-range-start">
+        </div>
+        <div class="form-row">
+            <label>End Date:</label>
+            <input type="date" id="remove-range-end">
+        </div>
+        <div class="form-row">
+            <label>
+                <input type="checkbox" id="remove-from-all-classes">
+                Remove from all classes
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                <input type="checkbox" id="remove-exclude-weekends">
+                Only remove weekdays (keep weekends)
+            </label>
+        </div>
+        <button id="remove-range-btn" class="remove-range-btn">🗑️ Remove Date Range</button>
+    </div>
+</div>            <!-- Global Settings Section -->
+            <div class="global-settings-section">
+                <h3>⚙️ Global Schedule Settings</h3>
+                
+                <div class="settings-group">
+                    <h4>Weekend Settings</h4>
+                    <label>
+                        <input type="checkbox" id="weekend-saturday-class">
+                        Saturday is a class day (check this if your school has classes on Saturday)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="weekend-sunday-class">
+                        Sunday is a class day (check this if your school has classes on Sunday)
+                    </label>
+                    <div class="settings-apply">
+                        <label>
+                            <input type="checkbox" id="weekend-apply-all">
+                            Apply to all classes
+                        </label>
+                        <button id="save-weekend-settings" class="save-schedule-btn">Save Weekend Settings</button>
+                    </div>
+                </div>                
+                <div class="settings-group">
+                    <h4>Class Frequency (which days of the week are class days)</h4>
+                    <div class="day-checkboxes">
+                        <label><input type="checkbox" value="1"> Monday</label>
+                        <label><input type="checkbox" value="2"> Tuesday</label>
+                        <label><input type="checkbox" value="3"> Wednesday</label>
+                        <label><input type="checkbox" value="4"> Thursday</label>
+                        <label><input type="checkbox" value="5"> Friday</label>
+                        <label><input type="checkbox" value="6"> Saturday</label>
+                        <label><input type="checkbox" value="0"> Sunday</label>
+                    </div>
+                    <div class="settings-apply">
+                        <label>
+                            <input type="checkbox" id="frequency-apply-all">
+                            Apply to all classes
+                        </label>
+                        <button id="save-frequency-settings" class="save-schedule-btn">Save Frequency Settings</button>
+                    </div>
+                </div>                
+                <div class="settings-group">
+                    <h4>Reset to Default</h4>
+                    <button id="reset-schedule-btn" class="reset-schedule-btn">↺ Reset All Schedule Settings for this Class</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Tab Content -->
+    <div id="analytics-main-content" class="main-tab-content" style="display: none;">
+        <div class="analytics-section">
+            <div class="analytics-header">
+                <h2>📊 Analytics</h2>
+                <div class="analytics-header-buttons">
+                <button id="print-all-compact-btn" class="export-btn">📄 Print All (No Quests)</button>
+                <button id="print-all-full-btn" class="export-btn">📚 Print All (With Quests)</button>
+                <button id="export-analytics-btn" class="export-btn">📎 Export to CSV</button>
+                </div>
+            </div>
+            
+            <!-- Class Filter -->
+            <div class="analytics-filter">
+                <label>Class Filter:</label>
+                <select id="analytics-class-filter">
+                    <option value="all">All Classes</option>
+                </select>
+            </div>
+            
+            <!-- Top Stats Cards -->
+            <div class="analytics-cards">
+                <div class="analytics-card">
+                    <div class="card-icon">📚</div>
+                    <div class="card-content">
+                        <div class="card-label">Completion Rate</div>
+                        <div class="card-value" id="analytics-completion">0%</div>
+                        <div class="card-sub" id="analytics-completion-detail">(0/0)</div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-content">
+                        <div class="card-label">Active Students</div>
+                        <div class="card-value" id="analytics-active-students">0</div>
+                        <div class="card-sub">currently working on quests</div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card">
+                    <div class="card-icon">⏱️</div>
+                    <div class="card-content">
+                        <div class="card-label">Avg Time per Quest</div>
+                        <div class="card-value" id="analytics-avg-time-formative">0</div>
+                        <div class="card-sub">formative / <span id="analytics-avg-time-summative">0</span> summative</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Average Grade 2x2 Grid -->
+            <div class="analytics-avg-grade">
+                <h3>Average Grade by Domain</h3>
+                <div class="grade-grid-2x2" id="analytics-avg-grade-grid">
+                    <!-- Dynamic 2x2 grid will be populated here -->
+                </div>
+            </div>
+            
+            <!-- Students Table -->
+            <div class="analytics-students">
+                <h3>Students</h3>
+                <div class="table-container">
+                    <table id="analytics-students-table" class="analytics-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Class</th>
+                                <th>Quests Done</th>
+                                <th>Active Quest</th>
+                                <th>Domain Grades</th>
+                                <th>Last Upload</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analytics-students-tbody">
+                            <tr><td colspan="6">Loading...</td></tr>
+                        </tbody>
+                        <tfoot id="analytics-students-tfoot" style="display: none;">
+                            <!-- Class average row will go here -->
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Quests Table (Top 10 Popular) -->
+            <div class="analytics-quests">
+                <h3>Most Popular Quests</h3>
+                <div class="table-container">
+                    <table id="analytics-quests-table" class="analytics-table">
+                        <thead>
+                            <tr>
+                                <th>Quest</th>
+                                <th>Path</th>
+                                <th>Type</th>
+                                <th>Completed</th>
+                                <th>Avg Time</th>
+                                <th>Avg Grade</th>
+                                <th>Popularity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analytics-quests-tbody">
+                            <tr><td colspan="7">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="analytics-pagination" id="analytics-pagination">
+                    <!-- Pagination controls will go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Create Class Modal -->
+        <div id="create-class-modal" class="teacher-work-modal">
+            <div class="teacher-work-modal-content" style="max-width: 400px;">
+                <span class="teacher-work-close">&times;</span>
+                <h3>Create New Class</h3>
+                <input type="text" id="new-class-name-input" class="new-class-input" placeholder="Class name (e.g., Period 1, Art A, etc.)">
+                <button id="confirm-create-class" class="teacher-save-grades-btn">Create Class</button>
+            </div>
+        </div>
+        <!-- Class Filter Container -->
+            <div id="student-details-panel" class="teacher-details-panel" style="display:none;">
+                <div class="details-header">
+                    <h2 id="selected-student-name"></h2>
+                    <div>
+                         <button id="print-student-full-btn" class="print-profile-btn">🖨️ Print Profile</button> 
+                         <button id="close-details-btn">✖</button>
+                    </div>
+                </div>
+                
+                <div class="teacher-tabs">
+                    <button class="tab-btn active" data-tab="profile">Student Profile</button>
+                    <button class="tab-btn" data-tab="quests">Quests & Grades</button>
+                    <button class="tab-btn" data-tab="works">Artworks Gallery</button>
+                </div>
+                
+                <div id="profile-tab" class="teacher-tab-content active">
+                    <div id="student-profile-container">
+                        <div class="teacher-profile-view">
+                            <div class="teacher-profile-avatar">
+                                <img id="teacher-profile-avatar" src="profile.png" alt="Avatar">
+                            </div>
+                            <div class="teacher-profile-info">
+                                <h3 id="teacher-profile-name">Loading...</h3>
+                                <p id="teacher-profile-email">Email: Loading...</p>
+                                <p id="teacher-profile-code">Teacher Code: Loading...</p>
+                            </div>
+                        </div>
+                        <div class="teacher-profile-standards">
+                            <h4>Art Standards Grades</h4>
+                            <table class="rubric-table" id="teacher-standards-table">
+                                <thead>
+                                    <tr>
+                                        <th>Standard Code</th>
+                                        <th>Standard Name</th>
+                                        <th>Formative Grade</th>
+                                        <th>Summative Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teacher-standards-tbody">
+                                    <tr><td colspan="4">Loading grades...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="teacher-profile-rewards">
+                            <h4>Rewards</h4>
+                            <p id="teacher-total-coins">Loading...</p>
+                        </div>
+                        <div class="teacher-profile-badges">
+                            <h4>Badges</h4>
+                            <div id="teacher-badges-container">Loading...</div>
+                        </div>
+                    </div>        
+                </div>
+                
+                <div id="quests-tab" class="teacher-tab-content" style="display:none;">
+                    <div id="student-quests-list"></div>
+                </div>
+        <!--------------------------- View Finished Work Overlay and Complete mark----------------------------------------->
+                        <template id="quest-item-template">
+                            <div class="teacher-quest-item">
+                                <div class="teacher-quest-header">
+                                    <span class="teacher-quest-title"></span>
+                                    <div class="teacher-quest-dates"></div>
+                                    <span class="teacher-quest-status"></span>
+                                    <button class="teacher-expand-btn">▼</button>
+                                </div>
+                                <div class="teacher-quest-details" style="display:none;">
+                                    <div class="teacher-rubric-container"></div>
+                                    <div class="teacher-quest-actions">
+                                        <button class="teacher-view-work-btn">📷 View Finished Work</button>
+                                        <button class="teacher-delete-quest-btn">🗑️ Delete Quest Data</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>        
+
+                <div id="works-tab" class="teacher-tab-content" style="display:none;">
+                    <div id="student-works-gallery" class="gallery-grid"></div>
+                </div>
+            </div>
+        <!-- Invite Student Modal -->
+        <div id="invite-modal" class="teacher-work-modal" style="display: none;">
+            <div class="teacher-work-modal-content" style="max-width: 450px;">
+                <span class="teacher-work-close">&times;</span>
+                <h3>✉️ Invite Student</h3>
+                
+                <p style="margin: 10px 0; font-size: 13px; opacity: 0.8;">
+                    Enter the student's email address. They will receive an invitation to create their account.
+                </p>
+                
+                <input type="email" id="invite-email" class="invite-email-input" placeholder="student@school.com" style="width: 100%; padding: 10px; margin: 10px 0; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,215,0,0.3); border-radius: 6px; color: white;">
+                
+                <select id="invite-class" class="invite-class-select" style="width: 100%; padding: 10px; margin: 10px 0; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,215,0,0.3); border-radius: 6px; color: white;">
+                    <option value="">Select Class (optional)</option>
+                </select>
+                
+                <div class="invite-modal-actions" style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button id="send-invite-btn" class="submit-students-btn" style="flex: 1;">📧 Send Invitation</button>
+                    <button id="cancel-invite-btn" class="cancel-invite-btn" style="flex: 1; background: #666; border: none; border-radius: 6px; padding: 10px; color: white; cursor: pointer;">Cancel</button>
+                </div>
+                
+                <div id="invite-message" class="settings-message" style="margin-top: 15px;"></div>
+            </div>
+        </div>       
+     </div>
+        <div id="teacher-work-modal" class="teacher-work-modal">
+            <div class="teacher-work-modal-content">
+                <span class="teacher-work-close">&times;</span>
+                <div id="teacher-work-content"></div>
+            </div>
+        </div>
+    <!-- Create Custom Quest Modal -->
+    <div id="create-custom-quest-modal" class="teacher-work-modal custom-quest-modal" style="display: none;">
+        <div class="teacher-work-modal-content">
+            <span class="teacher-work-close">&times;</span>
+            <h3>➕ Create Quest</h3>
+            
+            <form id="custom-quest-form">
+                <!-- Basic Info Section -->
+                <div class="form-section">
+                    <h4>Basic Information</h4>
+                    
+                    <label>Quest Title *</label>
+                    <input type="text" id="custom-quest-title" class="custom-quest-input">
+                    
+                    <label>Path *</label>
+                    <select id="custom-quest-path" class="custom-quest-select">
+                        <option value="Painter Path">Painter Path</option>
+                        <option value="Sketcher Path">Sketcher Path</option>
+                        <option value="Watercolor Path">Watercolor Path</option>
+                        <option value="3D Path">3D Path</option>
+                    </select>
+                    
+                    <label>Difficulty *</label>
+                    <select id="custom-quest-difficulty" class="custom-quest-select">
+                        <option value="1">1 - Easy</option>
+                        <option value="2">2 - Medium</option>
+                        <option value="3">3 - Hard</option>
+                    </select>
+                </div>
+                
+                <!-- Description Section -->
+                <div class="form-section">
+                    <h4>Description & Rationale</h4>
+                    
+                    <label>Rationale *</label>
+                    <textarea id="custom-quest-rationale" rows="3" class="custom-quest-textarea"></textarea>
+                    
+                    <label>Description *</label>
+                    <textarea id="custom-quest-description" rows="4" class="custom-quest-textarea"></textarea>
+                </div>
+                
+                <!-- Requirements Section -->
+                <div class="form-section">
+                    <h4>Requirements</h4>
+                    <div id="custom-quest-requirements-list">
+                        <div class="requirement-item">
+                            <input type="text" class="requirement-input" placeholder="Requirement">
+                            <button type="button" class="remove-requirement-btn">✖</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-requirement-btn" class="add-item-btn">+ Add Requirement</button>
+                </div>
+                
+                <!-- Links Section -->
+                <div class="form-section">
+                    <h4>Resource Links</h4>
+                    <div id="custom-quest-links-list">
+                        <div class="link-item">
+                            <input type="text" class="link-type" placeholder="Type (e.g., Video sample)">
+                            <input type="url" class="link-url" placeholder="URL">
+                            <button type="button" class="remove-link-btn">✖</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-link-btn" class="add-item-btn">+ Add Link</button>
+                </div>
+                
+                <!-- Rubric Section -->
+                <div class="form-section">
+                    <h4>Rubric</h4>
+                    <p class="form-note">The rubric will be generated based on your selected framework. After creating the quest, you can edit the rubric in the "Select Standards" tab.</p>
+                    <div id="custom-quest-rubric-preview" class="rubric-preview-placeholder">
+                        <p>Rubric will be available after quest creation</p>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="form-actions">
+                    <button type="button" id="cancel-custom-quest-btn" class="cancel-custom-quest-btn">Cancel</button>
+                    <button type="button" id="save-custom-quest-btn" class="save-custom-quest-btn">Create Quest</button>
+                </div>
+            </form>
+            
+            <div id="custom-quest-message" class="settings-message"></div>
+        </div>
+    </div>
+     <!-- Quest Details Panel (right-side overlay) -->
+    <div id="quest-details-panel" class="teacher-details-panel" style="display:none;">
+        <div class="details-header">
+            <h2 id="quest-details-title">Loading...</h2>
+            <button id="close-quest-details-btn">✖</button>
+        </div>
+    
+        <!-- Quest Details Tabs -->
+        <div class="teacher-tabs">
+            <button class="tab-btn quest-tab-btn active" data-quest-tab="profile">Quest Profile</button>
+            <button class="tab-btn quest-tab-btn" data-quest-tab="prerequisites">Pre requisites/Leads To</button>
+            <button class="tab-btn quest-tab-btn" data-quest-tab="standards">Select Standards</button>
+            <button class="tab-btn quest-tab-btn" data-quest-tab="students">Active Students</button>
+        </div>
+        
+        <!-- Quest Profile Tab -->
+        <div id="quest-profile-tab" class="teacher-tab-content active">
+            <div id="quest-profile-container">
+                <!-- Quest image and basic info -->
+                <div class="quest-profile-view">
+                    <div class="quest-profile-avatar">
+                        <img id="quest-profile-image" src="" alt="Quest Image">
+                    </div>
+                    <div class="quest-profile-info">
+                        <h3 id="quest-profile-title">Loading...</h3>
+                        <p id="quest-profile-path">Path: Loading...</p>
+                        <p id="quest-profile-difficulty">Difficulty: Loading...</p>
+                    </div>
+                </div>
+                
+                <!-- Requirements -->
+                <div class="quest-requirements-section">
+                    <h4>Requirements</h4>
+                    <ul id="quest-requirements-list"></ul>
+                </div>
+                
+                <!-- Rubric Table -->
+                <div class="quest-rubric-section">
+                    <h4>Rubric</h4>
+                    <div id="quest-rubric-container"></div>
+                </div>
+                
+                <!-- Rationale -->
+                <div class="quest-rationale-section">
+                    <h4>Rationale</h4>
+                    <p id="quest-rationale-text"></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Prerequisites/Leads To Tab -->
+        <div id="quest-prerequisites-tab" class="teacher-tab-content" style="display:none;">
+            <div class="prerequisites-container">
+                <div class="prerequisites-column">
+                    <h4>📋 Prerequisites</h4>
+                    <div id="prerequisites-list" class="prerequisites-list"></div>
+                </div>
+                <div class="leads-to-column">
+                    <h4>🔗 Leads To</h4>
+                    <div id="leads-to-list" class="leads-to-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- : Select Standards Tab -->
+        <div id="quest-standards-tab" class="teacher-tab-content" style="display:none;">
+            <div class="standards-selection-container">
+                <p class="standards-info">
+                    📋 Select which standards this quest evaluates. 
+                    <span id="selected-standards-count">Unchecked standards will be hidden from the rubric for both you and your students.</span>
+                </p>
+                <div id="standards-checkbox-list" class="standards-checkbox-list">
+                    <!-- Standards table will be dynamically loaded here -->
+                </div>
+                <div class="standards-actions">
+                    <button id="save-standards-btn" class="teacher-save-grades-btn">💾 Save Standards Selection</button>
+                    <button id="reset-standards-btn" class="teacher-reset-standards-btn">↺ Reset to All Standards</button>
+                </div>
+            </div>
+        </div>        
+        <!-- Active Students Tab -->
+        <div id="quest-students-tab" class="teacher-tab-content" style="display:none;">
+            <div class="quest-students-container">
+                <div class="active-students-section">
+                    <h4>🟢 Active Students</h4>
+                    <div id="active-students-list" class="active-students-list"></div>
+                </div>
+                <div class="completed-students-section">
+                    <h4>✅ Completed Students</h4>
+                    <div id="completed-students-list" class="completed-students-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contest Management Overlay -->
+    <div id="contest-management-overlay" class="teacher-overlay" style="display: none;">
+        <div id="contest-management-panel" class="teacher-profile-panel">
+            <div class="panel-header">
+                <h2 id="contest-management-title">Contest Management</h2>
+                <button id="close-contest-management" class="close-panel-btn">✖</button>
+            </div>
+            <div class="teacher-tabs">
+                <button class="tab-btn active" data-contest-tab="profile"> Contest Profile</button>
+                <button class="tab-btn" data-contest-tab="pending">Pending Submissions <span id="pending-count" class="tab-badge">0</span></button>
+                <button class="tab-btn" data-contest-tab="submitted">Submitted Works <span id="submitted-count" class="tab-badge">0</span></button>
+            </div>
+            
+            <!-- Contest Profile Tab -->
+            <div id="contest-profile-tab" class="contest-tab-content">
+                <div id="contest-profile-content"></div>
+            </div>
+            <!-- Pending Submissions Tab -->
+            <div id="contest-pending-tab" class="contest-tab-content" style="display: none;">
+                <div id="contest-pending-list" class="contest-submissions-grid"></div>
+            </div>
+            <!-- Submitted Works Tab -->
+            <div id="contest-submitted-tab" class="contest-tab-content" style="display: none;">
+                <div id="contest-submitted-list" class="contest-submissions-grid"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Reject Submission Modal -->
+    <div id="reject-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Reject Submission</h3>
+            <p>Please provide a reason for rejecting this artwork:</p>
+            <textarea id="rejection-reason" rows="3" placeholder="e.g., Does not meet requirements, Inappropriate content, etc."></textarea>
+            <div class="modal-buttons">
+                <button id="cancel-reject" class="modal-btn">Cancel</button>
+                <button id="confirm-reject" class="modal-btn reject-btn">Confirm Rejection</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Date Modal for No-Class Day -->
+    <div id="date-modal" class="teacher-work-modal" style="display: none;">
+        <div class="teacher-work-modal-content" style="max-width: 450px;">
+            <span class="teacher-work-close">&times;</span>
+            <h3 id="date-modal-title">Mark Day</h3>
+            
+            <input type="hidden" id="modal-date-value">
+            
+            <div class="modal-date-display" style="margin: 15px 0; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 8px; text-align: center;">
+                <strong id="modal-date-text"></strong>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;">Status:</label>
+                <select id="modal-status" style="width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,215,0,0.3); border-radius: 4px; color: white;">
+                    <option value="class">Class Day (normal schedule)</option>
+                    <option value="no-class">No Class (off day)</option>
+                </select>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px;" id="reason-group">
+                <label style="display: block; margin-bottom: 5px;">Reason (required for No Class):</label>
+                <input type="text" id="modal-reason" class="modal-reason-input" placeholder="e.g., Holiday, School Event, Teacher Training" style="width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,215,0,0.3); border-radius: 4px; color: white;">
+            </div>
+            
+            <!-- Notes field -->
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;">Notes (optional):</label>
+                <textarea id="modal-notes" rows="2" placeholder="Add notes about this day (e.g., Field trip, Art show, Guest speaker)" style="width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,215,0,0.3); border-radius: 4px; color: white;"></textarea>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>
+                    <input type="checkbox" id="modal-apply-all">
+                    Apply to all classes
+                </label>
+            </div>
+            
+            <div class="modal-actions" style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button id="modal-cancel-btn" class="modal-cancel-btn" style="background: #666; border: none; border-radius: 6px; padding: 8px 16px; color: white; cursor: pointer;">Cancel</button>
+                <button id="modal-save-btn" class="modal-save-btn" style="background: #4caf50; border: none; border-radius: 6px; padding: 8px 16px; color: white; cursor: pointer;">Save</button>
+                <button id="modal-delete-btn" class="modal-delete-btn" style="background: #f44336; border: none; border-radius: 6px; padding: 8px 16px; color: white; cursor: pointer; display: none;">Remove</button>
+            </div>
+        </div>
+    </div>
+    <!-- Create Art Battle Contest Overlay -->
+    <div id="create-contest-overlay" class="quest-overlay" style="display: none;">
+        <div class="quest-box" style="max-width: 600px; width: 90%; max-height: 85vh; overflow-y: auto;">
+            <span id="close-contest-overlay" class="close-btn" style="position: absolute; top: 15px; right: 20px;">✖</span>
+            
+            <h2 style="color: #ffd700; text-align: center; margin-bottom: 20px;">⚔️ Create Art Battle Contest</h2>
+            
+            <form id="create-contest-form">
+                <!-- Title -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Title *</label>
+                    <input type="text" id="contest-title" class="auth-input" placeholder="e.g., Spring Art Showdown" style="width: 100%;">
+                </div>
+                
+                <!-- Description -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Description / Theme *</label>
+                    <textarea id="contest-description" rows="3" class="auth-input" placeholder="Describe the theme or prompt for this competition..." style="width: 100%;"></textarea>
+                </div>
+                
+                <!-- Requirements -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Requirements *</label>
+                    <textarea id="contest-requirements" rows="2" class="auth-input" placeholder="What must students submit? (e.g., digital painting, 1080x1080, PNG format)" style="width: 100%;"></textarea>
+                </div>
+                
+                <!-- Rubric (Voting Guidelines) -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Voting Rubric / Guidelines *</label>
+                    <textarea id="contest-rubric" rows="3" class="auth-input" placeholder="How should students vote? (e.g., Creativity 40%, Technique 30%, Originality 30%)" style="width: 100%;"></textarea>
+                    <small style="color: #aaa;">This helps students vote fairly, not just for the prettiest image</small>
+                </div>
+                
+                <!-- Resources (Optional) -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Resources (Optional)</label>
+                    <textarea id="contest-resources" rows="2" class="auth-input" placeholder="Links to references, tutorials, or examples..." style="width: 100%;"></textarea>
+                </div>
+                
+                <!-- Visibility -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Visibility</label>
+                    <div style="display: flex; gap: 20px;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="visibility" value="local" checked> Local (Only my students)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="visibility" value="worldwide"> Worldwide (All teachers' students)
+                        </label>
+                    </div>
+                    <small style="color: #aaa;">Worldwide = students from any teacher can see and vote</small>
+                </div>
+                
+                <!-- Dates -->
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label style="display: block; color: #ffd700; margin-bottom: 5px;">Start Date & Time *</label>
+                        <input type="date" id="contest-start-date" class="auth-input" style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label style="display: block; color: #ffd700; margin-bottom: 5px;">End Date & Time *</label>
+                        <input type="date" id="contest-end-date" class="auth-input" style="width: 100%;">
+                    </div>
+                </div>
+                
+                <!-- Warning Message -->
+                <div id="contest-warning" style="background: rgba(255, 0, 0, 0.2); border: 1px solid #ff4444; border-radius: 8px; padding: 10px; margin-bottom: 15px; display: none;">
+                    <small style="color: #ff8888;">⚠️ After creation, only Resources can be edited. Title, Description, Requirements, Rubric, and Dates cannot be changed.</small>
+                </div>
+                
+                <!-- Password Verification -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ffd700; margin-bottom: 5px;">Confirm with Password *</label>
+                    <input type="password" id="contest-password" class="auth-input" placeholder="Enter your teacher password to confirm" style="width: 100%;">
+                </div>
+                
+                <!-- Message Area -->
+                <div id="contest-message" class="auth-message" style="margin-bottom: 15px;"></div>
+                
+                <!-- Buttons -->
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button type="button" id="cancel-contest-btn" class="auth-btn" style="background: #666;">Cancel</button>
+                    <button type="button" id="create-contest-submit-btn" class="auth-btn auth-btn-primary">Create Contest</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Password Verify Modal -->
+        <div id="password-verify-modal" class="password-verify-modal">
+            <div class="password-verify-content">
+                <div class="password-verify-header">
+                    <h3>Verify Password</h3>
+                    <span class="password-verify-close">&times;</span>
+                </div>
+                <div class="password-verify-body">
+                    <p>Please enter your teacher password to confirm this action.</p>
+                    <input type="password" id="verify-password-input" class="password-verify-input" placeholder="Enter your password" autocomplete="off">
+                    <div class="password-verify-buttons">
+                        <button id="verify-cancel-btn" class="password-verify-cancel">Cancel</button>
+                        <button id="verify-confirm-btn" class="password-verify-confirm">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+            const SUPABASE_URL = 'https://qzxvwoyigrrpdywvhckk.supabase.co';
+            const SUPABASE_ANON_KEY = 'sb_publishable_ncHOn7TNowbRZS9s-RYeuA_2m8ka_Iu';
+            const DELETE_USER_FUNCTION_URL = 'https://qzxvwoyigrrpdywvhckk.supabase.co/functions/v1/delete-user';
+            window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        </script>
+        <script src="teacher-script.js"></script>
+    </body>
+</html>
