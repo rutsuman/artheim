@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quest Map</title>
+    <link rel="stylesheet" href="style.css?v=20260525"> 
+    <link rel="icon" type="image/png" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+</head>
+<body>
+
+<div id="map-container">
+    <div id="map-warning-overlay" class="map-overlay"></div>
+    <img id="map-image" src="map.jpg" alt="World Map">
+
+
+    <!-- Art Battle Hotspot -->
+    <div class="hotspot debug artbattle-hotspot" data-map="map1" data-city="artbattle" style="top:59%; left:47%;" title="Art Battle Competition"></div>
+
+    <!-- quests for map1 painter's path-->
+    <div class="hotspot debug" data-map="map1" style="top:51.5%; left:48%;" data-city="quest1"></div>
+    <div class="hotspot debug" data-map="map1" style="top:47.5%; left:35%;" data-city="quest2"></div>
+    <div class="hotspot debug" data-map="map1" style="top:59.5%; left:35%;" data-city="quest3"></div>
+    <div class="hotspot debug" data-map="map1" style="top:66.5%; left:30.3%;" data-city="quest4"></div>
+    <div class="hotspot debug" data-map="map1" style="top:57.5%; left:23.5%;" data-city="quest5"></div>
+    <div class="hotspot debug" data-map="map1" style="top:43.9%; left:23%;" data-city="quest8"></div>
+    <div class="hotspot debug" data-map="map1" style="top:39.5%; left:65%;" data-city="quest6"></div>
+    <div class="hotspot debug" data-map="map1" style="top:47%; left:9%;" data-city="quest7"></div>
+    <div class="hotspot debug" data-map="map1" style="top:41%; left:28%;" data-city="quest9"></div>
+    <div class="hotspot debug" data-map="map1" style="top:22%; left:33%;" data-city="quest10"></div>
+    <div class="hotspot debug" data-map="map1" style="top:72.2%; left:20%;" data-city="quest11"></div>
+    <div class="hotspot debug" data-map="map1" style="top:37.3%; left:55.2%;" data-city="quest13"></div>
+    <div class="hotspot debug" data-map="map1" style="top:29.5%; left:44%;" data-city="quest14"></div>
+    <div class="hotspot debug" data-map="map1" style="top:39.5%; left:40.5%;" data-city="quest15"></div>
+    <div class="hotspot debug" data-map="map1" style="top:52.5%; left:72.5%;" data-city="quest19"></div>
+    <div class="hotspot debug" data-map="map1" style="top:36.5%; left:64.5%;" data-city="quest33"></div>
+    <div class="hotspot debug" data-map="map1" style="top:35%; left:11%;" data-city="quest34"></div>
+    <div class="hotspot debug" data-map="map1" style="top:73%; left:84.5%;" data-city="quest35"></div>
+    <div class="hotspot debug" data-map="map1" style="top:55.2%; left:87%;" data-city="quest36"></div>
+    <div class="hotspot debug" data-map="map1" style="top:51.5%; left:62%;" data-city="quest37"></div>
+    <div class="hotspot debug" data-map="map1" style="top:9.8%; left:76%;" data-city="quest51"></div>
+    <div class="hotspot debug" data-map="map1" style="top:5%; left:46.5%;" data-city="quest52"></div>
+    <div class="hotspot debug" data-map="map1" style="top:91.5%; left:78%;" data-city="quest55"></div>
+    <div class="hotspot debug" data-map="map1" style="top:93.5%; left:96%;" data-city="quest64"></div>
+    <div class="hotspot debug" data-map="map1" style="top:9%; left:63%;" data-city="quest66"></div>
+    <div class="hotspot debug" data-map="map1" style="top: 93.2%; left:58.5%;" data-city="quest69"></div>
+    <div class="hotspot debug" data-map="map1" style="top: 76.2%; left:46.5%;" data-city="quest75"></div>
+    <div class="hotspot debug" data-map="map1" style="top: 84.5%; left:56.3%;" data-city="quest80"></div>
+
+    <!--quests for map1 sketcher's path-->
+    <div class="hotspot debug" data-map="map1" style="top:71.5%; left:60%;" data-city="quest12"></div>
+    <div class="hotspot debug" data-map="map1" style="top:61.5%; left:70.5%;" data-city="quest18"></div>
+    <div class="hotspot debug" data-map="map1" style="top:53.8%; left:67.5%;" data-city="quest20"></div>
+    <div class="hotspot debug" data-map="map1" style="top:31%; left:89.5%;" data-city="quest21"></div>
+    <div class="hotspot debug" data-map="map1" style="top:46.5%; left:92%;" data-city="quest29"></div>
+    <div class="hotspot debug" data-map="map1" style="top:84.5%; left:98%;" data-city="quest30"></div>
+    <div class="hotspot debug" data-map="map1" style="top:72.5%; left:76%;" data-city="quest39"></div>
+    <div class="hotspot debug" data-map="map1" style="top:26.2%; left:23%;" data-city="quest41"></div>
+    <div class="hotspot debug" data-map="map1" style="top:36.5%; left:45.5%;" data-city="quest42"></div>
+    <div class="hotspot debug" data-map="map1" style="top:67%; left:90%;" data-city="quest43"></div>
+    <div class="hotspot debug" data-map="map1" style="top:13.3%; left:83.5%;" data-city="quest44"></div>
+    <div class="hotspot debug" data-map="map1" style="top:7.8%; left:22%;" data-city="quest45"></div>
+    <div class="hotspot debug" data-map="map1" style="top:17.5%; left:73.5%;" data-city="quest46"></div>
+    <div class="hotspot debug" data-map="map1" style="top:45%; left:74.5%;" data-city="quest47"></div>
+    <div class="hotspot debug" data-map="map1" style="top:60.5%; left:82.5%;" data-city="quest48"></div>
+    <div class="hotspot debug" data-map="map1" style="top:5.2%; left:58%;" data-city="quest72"></div>
+    <div class="hotspot debug" data-map="map1" style="top:81%; left:37%;" data-city="quest73"></div>
+    <div class="hotspot debug" data-map="map1" style="top:99.2%; left:47.5%;" data-city="quest78"></div>
+    <div class="hotspot debug" data-map="map1" style="top:55.2%; left:9.8%;" data-city="quest79"></div>
+
+    
+    <!--quests for map2 watercolour's path-->
+    <div class="hotspot debug" data-map="map2" style="top:47.6%; left:49.5%;" data-city="quest16"></div>
+    <div class="hotspot debug" data-map="map2" style="top:2%; left:48.5%;" data-city="quest17"></div>
+    <div class="hotspot debug" data-map="map2" style="top:37.5%; left:48.5%;" data-city="quest22"></div>
+    <div class="hotspot debug" data-map="map2" style="top:63%; left:94.2%;" data-city="quest23"></div>
+    <div class="hotspot debug" data-map="map2" style="top:95.8%; left:80%;" data-city="quest24"></div>
+    <div class="hotspot debug" data-map="map2" style="top:58.3%; left:81%;" data-city="quest25"></div>
+    <div class="hotspot debug" data-map="map2" style="top:46.6%; left:14.5%;" data-city="quest26"></div>
+    <div class="hotspot debug" data-map="map2" style="top:76%; left:96.5%;" data-city="quest27"></div>
+    <div class="hotspot debug" data-map="map2" style="top:87.5%; left:52.2%;" data-city="quest32"></div>
+    <div class="hotspot debug" data-map="map2" style="top:66.2%; left:52.3%;" data-city="quest49"></div>
+    <div class="hotspot debug" data-map="map2" style="top:64.4%; left:65.3%;" data-city="quest50"></div>
+    <div class="hotspot debug" data-map="map2" style="top:31%; left:23.5%;" data-city="quest74"></div>
+
+    <!--quests for map3 3D Artist's path-->
+    <div class="hotspot debug" data-map="map3" style="top:20.3%; left:18%;" data-city="quest53"></div>
+    <div class="hotspot debug" data-map="map3" style="top:72.45%; left:78.2%;" data-city="quest54"></div>
+    <div class="hotspot debug" data-map="map3" style="top:46.2%; left:68.5%;" data-city="quest56"></div>
+    <div class="hotspot debug" data-map="map3" style="top:34%; left:78%;" data-city="quest57"></div>
+    <div class="hotspot debug" data-map="map3" style="top:63%; left:95.3%;" data-city="quest58"></div>
+    <div class="hotspot debug" data-map="map3" style="top:36.3%; left:8%;" data-city="quest59"></div>
+    <div class="hotspot debug" data-map="map3" style="top:52.1%; left:49.8%;" data-city="quest60"></div>
+    <div class="hotspot debug" data-map="map3" style="top:13%; left:38.4%;" data-city="quest61"></div>
+    <div class="hotspot debug" data-map="map3" style="top:76.3%; left:16.3%;" data-city="quest62"></div>
+    <div class="hotspot debug" data-map="map3" style="top:31.6%; left:29.8%;" data-city="quest63"></div>
+    <div class="hotspot debug" data-map="map3" style="top:6.8%; left:25.2%;" data-city="quest67"></div>
+    <div class="hotspot debug" data-map="map3" style="top:12%; left:88%;" data-city="quest68"></div>
+    <div class="hotspot debug" data-map="map3" style="top:59.5%; left:12%;" data-city="quest70"></div>
+    <div class="hotspot debug" data-map="map3" style="top: 94%; left:89.8%;" data-city="quest71"></div>
+    <div class="hotspot debug" data-map="map3" style="top: 90.26%; left:2.3%;" data-city="quest76"></div>
+    <div class="hotspot debug" data-map="map3" style="top: 4.9%; left:14.5%;" data-city="quest77"></div>
+    <div class="hotspot debug" data-map="map3" style="top: 5.4%; left:70%;" data-city="quest81"></div>
+
+
+ </div>
+<!-- Floating Navigation for Maps 2 & 3 (Gallery only) -->
+<div id="floating-nav" class="floating-nav" style="display: none;">
+    <div class="floating-nav-item" id="floating-gallery" title="View Art Gallery">
+        🖼️Gallery 
+    </div>
+</div>
+<!----------------------------------------- Dropdown menu container ----------------------------------------------->
+<div id="dropdown-container">
+    <select id="path-selector">
+        <option value="">Select a Path</option>
+        <option value="paintersPath">Painter's Path</option>
+        <option value="sketcherPath">Sketcher's Path</option>
+        <option value="watercoloursPath">Watercolourist's Path</option>
+        <option value="3DPath">3D Artist's Path</option>
+    </select>
+
+    <select id="mvp-quests" style="display:none;">
+        <option value="">Select MVP Quest</option>
+    </select>
+        <!-- map change functionality-->
+   <div id="map-switcher">
+        <select id="map-selector">
+        <option value="map1">Painting Wing</option>
+        <option value="map2">Watercolor Wing</option>
+        <option value="map3">3D World</option>
+
+        <!-- Add future maps here -->
+    </select>
+
+        <!--search engine info-->
+    <div id="quest-search-container">
+        <input
+            type="text"
+            id="quest-search"
+            placeholder="Search quest"
+            autocomplete="off"/>
+    <div id="quest-search-results"></div>
+    </div>
+</div>    
+</div>
+<!----------------------------------------- QUEST POP UP OVERLAY--------------------------------------------------->
+<div id="quest-overlay">
+    <div id="quest-box">
+        <span id="close-quest" onclick="closeQuest()">✖</span>
+        <!-- First row: Painter path, timer button, completed checkbox, difficulty -->
+        <div class="quest-row">
+            <div class="quest-cell">
+                <strong> Paths:</strong>
+                <span id="quest-paths"></span>
+            </div>
+            <div class="quest-cell difficulty">
+                <strong>Difficulty:</strong>
+                <span class="stars"></span>
+            </div>
+        </div>
+
+        <!-- Second row: Quest title -->
+        <div class="quest-row">
+            <div class="quest-cell full">
+                <h2 id="quest-title"></h2>
+                
+            </div>
+            <div class="quest-cell timer-cell">
+                <strong>Timer:</strong>
+                <div class="timer-controls">
+                    <button id="quest-accept" class="timer-accept-btn">Accept Quest</button>
+                    <div id="timer-display" class="timer-display">--:--</div>
+                </div>
+            </div>
+
+
+            <div class="quest-cell rationale-cell">
+                <h2 id="quest-rationale"></h2>
+            </div>
+        </div>
+
+        <!-- Third row: Image, description, requirements -->
+         
+        <div class="quest-row">
+            <div class="quest-cell image-cell">
+                <img id="quest-character" />
+            </div>
+
+            <div class="quest-cell description-cell">
+                <p id="quest-text"></p>
+            </div>
+
+            <div class="quest-cell requirements-cell">
+                <p id="quest-requirements"></p>
+            </div>
+        </div>
+
+        <!-- Fourth row: Rubric and prerequisites/leads tabs -->
+        <div class="quest-row">
+            <div class="quest-cell rubric-cell">
+                <p id="quest-rubric"></p>
+            </div>
+
+            
+            <div class="quest-cell prereq-leads">
+                <!-- Tab buttons -->
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="prereq">Prerequisites (formative)</button>
+                    <button class="tab-button" data-tab="leads">Leads To (Summative)</button>
+                </div>
+
+                <!-- Tab content -->
+                <div class="tab-content" id="tab-prereq">
+                    <ul id="quest-prereq-leads-prereq">
+                        <li>None</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="tab-leads" style="display: none">
+                    <ul id="quest-prereq-leads-to">
+                        <li>None</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fifth row: Links, finished works and Reward -->
+        <div class="quest-row">
+            <div class="quest-cell links-cell">
+                <ul id="quest-links"></ul>
+            </div>
+            <div class="quest-cell work-cell" id="open-work-overlay">
+        <ul id="work-links"></ul>
+        <strong id="finished-work-btn" style="cursor: pointer;">Finished Work</strong>
+    </div>
+            <div class="quest-cell reward-cell">
+                <strong>Reward</strong>
+                <p id="quest-reward"></p>
+            </div>
+            </div>
+        </div>
+</div>
+<!------------------------------------------- WORKS OVERLAY ------------------------------------------------------->
+<div id="work-overlay" class="work-overlay">
+  <div class="overlay-content">
+    <!-- Close Button (optional but recommended) -->
+    <button class="close-overlay" type="button">×</button>
+    <!-- Photo Field -->
+    <div class="work-image-section">
+      <label for="work-image">Upload Photo</label>
+      <input type="file" id="work-image" name="work-image" accept="image/*">
+      <!-- Preview image (optional, useful later with JS) -->
+      <img id="image-preview" alt="Work preview">
+    </div>
+    <button type="button" id="delete-work-image" class="delete-image-btn">Delete</button>
+ <button type="button" class="save-work">Save</button>
+
+
+    <!-- Editable Fields -->
+    <form class="work-details-form">
+      <!-- First Line: Title / Size / Media -->
+      <div class="work-main-info">
+        <div class="field-group">
+          <label for="work-title">Title</label>
+          <input type="text" id="work-title" name="work-title" placeholder="Enter title">
+        </div>
+        <div class="field-group">
+          <label for="work-size">Size</label>
+          <input type="text" id="work-size" name="work-size" placeholder="e.g. 50x70 cm">
+        </div>
+        <div class="field-group">
+          <label for="work-media">Media</label>
+          <input type="text" id="work-media" name="work-media" placeholder="e.g. Acrylic on canvas">
+        </div>
+      </div>
+      <!-- Second Line: Description -->
+      <div class="field-group">
+        <label for="work-description">Description</label>
+         <button type="button" class="help-btn" id="helpButton" aria-label="Description help">?</button>
+        <textarea id="work-description" name="work-description" rows="4" placeholder="Write a short description.No more than 60 words.."></textarea>
+      </div>
+    </form>
+  </div>
+</div>
+<!-------------------------------------- Fullscreen Image Viewer Overlay -------------------------------------->
+<div id="fullscreen-image-overlay" class="fullscreen-overlay">
+    <div class="fullscreen-container">
+        <button class="fullscreen-close" id="fullscreen-close">×</button>
+        <img id="fullscreen-image" class="fullscreen-image" alt="Fullscreen artwork">
+        <div class="fullscreen-info">
+            <h3 id="fullscreen-title"></h3>
+            <p id="fullscreen-details"></p>
+            <p id="fullscreen-description"></p>
+        </div>
+    </div>
+</div>
+<!------------------------------------------- Help Overlay -------------------------------------------------------->
+<div id="helpModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>What an Art Description Should Include</h2>
+      <button class="close-btn" id="closeModalBtn">&times;</button>
+    </div>
+    <div class="modal-body">
+      <!-- Section 1 -->
+      <h3>1 - Your Inquiry (Big Idea):</h3>
+      <ul>
+        <li><strong>What question are you exploring?</strong></li>
+        <li><strong>What theme connects your work?</strong></li>
+      </ul>
+      <h4>Example:</h4>
+      <p class="example">"This piece explores how cultural identity shifts between private and public spaces."</p>
+      
+      <!-- Section 2 -->
+      <h3>2 - Intent (Why You Made It)</h3>
+      <ul>
+        <li><strong>What were you trying to communicate?</strong></li>
+        <li><strong>What meaning does the work have?</strong></li>
+      </ul>
+      <h4>Example:</h4>
+      <p class="example">"I wanted to show the contrast between internal anxiety and external confidence."</p>
+      
+      <!-- Section 3 -->
+      <h3>3 - Materials & Process</h3>
+      <ul>
+        <li><strong>Medium (acrylic, charcoal, digital photography, mixed media, etc.)</strong></li>
+        <li><strong>Techniques used</strong></li>
+        <li><strong>Any experimentation or revision</strong></li>
+      </ul>
+      <h4>Example:</h4>
+      <p class="example">"I used layered acrylic glazes and palette knife textures to create depth and emotional intensity."</p>
+      
+      <!-- Section 4 -->
+      <h3>4 - Art Elements & Principles</h3>
+      <ul>
+        <li><strong>Mention how you used the Elements of Art and Principles of Design</strong></li>
+      </ul>
+      <h4>Example:</h4>
+      <p class="example">"The asymmetrical composition and high contrast lighting emphasize isolation."</p>
+      
+      <!-- Complete Example -->
+      <h3>Complete Example:</h3>
+      <p class="example">"In this piece, I explore how cultural identity shifts between private and public spaces by contrasting internal desire with the restrictive Superego. I used layered acrylic glazes and palette knife textures to build depth and emotional tension. The asymmetrical composition and high-contrast lighting reinforce a sense of isolation."</p>
+    </div>
+  </div>
+</div>
+<!------------------------------------------ GALLERY OVERLAY ------------------------------------------------------>
+<div id="gallery-overlay" class="quest-overlay" style="display:none;">
+  <div id="gallery-box" class="quest-box gallery-box">
+    <span id="close-gallery" class="close-btn">✖</span>
+    
+    <!-- Header with student name -->
+    <div class="gallery-header">
+      <h2 id="gallery-student-name"></h2>
+    </div>
+    
+    <!-- Gallery grid container -->
+    <div id="gallery-grid" class="gallery-grid">
+      <!-- Gallery items will be dynamically inserted here -->
+      <div class="gallery-empty">No artworks uploaded yet</div>
+    </div>
+  </div>
+</div>
+<!-------------------------------------- ART BATTLE OVERLAY ------------------------------------------------------>
+<div id="artbattle-overlay" class="quest-overlay" style="display: none;">
+    <div id="artbattle-box" class="quest-box" style="max-width: 900px; width: 90%; max-height: 85vh; overflow-y: auto;">
+        <span id="close-artbattle" class="close-btn">✖</span>
+        
+        <div id="artbattle-content">
+            <div class="artbattle-loading">Loading competition...</div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------------- WELCOME OVERLAY----------------------------------------------------->
+<div id="welcome-overlay" class="welcome-overlay">
+  <div class="welcome-scroll">
+    <div class="scroll-top"></div>
+    <div class="scroll-body">
+        <h1>Welcome to Artheim</h1>
+        <p>Welcome, traveler, to Artheim — the Realm of Art, where every brushstroke is a spell and every sketch is a map to a new world.</p>
+        <p></p>
+        <p>Here, the old masters still whisper in the wind, and the elements themselves answer only to those who dare to create. You are not merely a student; you are an apprentice of the unseen, a seeker of form, color, and meaning.</p>
+        <p></p>
+        <p>Across this realm, quests await you—each one a challenge forged to sharpen your skills, deepen your vision, and awaken the artist within. From the quiet discipline of drawing to the wild alchemy of paint, from the solid truth of sculpture to the delicate flow of watercolor, you will face trials that test your patience, your imagination, and your courage.</p>
+        <p></p>
+        <p>But fear not. You will not travel alone. Guides, mentors, and the spirits of creativity will stand beside you, offering knowledge and inspiration. With every quest completed, your power grows: your hand becomes steadier, your eye becomes keener, and your voice becomes more confident.</p>
+        <p></p>
+        <p>So step forward, brave artist. The gates of Artheim are open.</p>
+        <p>Choose your path, accept your quest, and begin the journey that will transform you.</p>
+        <p></p>
+        <p>The realm awaits your masterpiece.</p>
+        <!-- Login Form -->
+<!-- Login Form -->
+                <div class="login-section">
+                    <h2>Sign In to Continue</h2>
+                    <input type="email" id="login-email" class="auth-input" placeholder="Email" />
+                    <input type="password" id="login-password" class="auth-input" placeholder="Password" />
+                    <button id="login-submit-btn" class="auth-btn auth-btn-primary">Login</button>
+                    <div class="auth-links-row">
+                        <p class="auth-link"><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+                        <p class="auth-link" id="create-profile-link">Create New Profile</p>
+                    </div>
+                    <p class="auth-link teacher-login-link">
+                        <a href="/teacher.html">💼 Teacher Login</a>
+                    </p>
+                    <div id="login-message" class="auth-message"></div>
+                </div>           
+              </div>
+            <div class="scroll-bottom"></div>
+          </div>
+        </div>
+<!-------------------------------------------- STUDENT SETUP (with password) -------------------------------------->
+<div id="student-setup-overlay" class="welcome-overlay" style="display:none;">
+  <div class="welcome-scroll">
+    <div class="scroll-body">
+      <h1>Create Your Profile</h1>
+      <p>Choose your name, email, and password to begin your journey.</p>
+
+      <input id="student-name-input" type="text" class="auth-input" placeholder="Your Name" />
+      <input id="student-email-input" type="email" class="auth-input" placeholder="Email Address" />
+      <input id="student-password-input" type="password" class="auth-input" placeholder="Password (min 6 characters)" />
+      <input id="student-confirm-password-input" type="password" class="auth-input" placeholder="Confirm Password" />
+      <input id="student-teacher-code" type="text" class="auth-input" placeholder="Teacher Code (from your teacher)" />      <button id="student-create-account-btn" class="auth-btn auth-btn-primary">Create Account</button>
+            
+      <p class="auth-link" id="back-to-login-link">← Back to Login</p>
+      
+      <div id="setup-message" class="auth-message"></div>
+      <div id="character-selection" style="display:none;">
+        <h2>Choose your character</h2>
+        <div id="characters-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--------------------------------------------Rationale pop up----------------------------------------------------->
+<div id="rationale-overlay" class="welcome-overlay">
+  <div class="welcome-scroll">
+    <div class="scroll-body">
+      <h1 id="rationale-title"></h1>
+      <div id="rationale-content"></div>
+      <button id="rationale-close">Close</button>
+    </div>
+  </div>
+</div>
+<!--parchment sound-->
+<audio id="unroll-sound" src="unroll.m4a" preload="auto"></audio>
+ <!-- Calendar Button -->
+<button id="calendar-btn" class="calendar-btn">📅 Calendar</button>
+<!-- Achievements Button -->
+<button id="achievements-btn" class="achievements-btn">🏆 Achievements</button>
+<!-------------------------------------------- ACHIEVEMENTS OVERLAY------------------------------------------------>
+<div id="achievements-overlay" class="quest-overlay">
+  <div class="quest-box">
+    <span id="close-achievements" class="close-btn">✖</span>
+    <div class="achievements-tabs">
+      <button class="tab-button active" data-tab="completed">Completed Quests</button>
+      <button class="tab-button" data-tab="achievements">Achievements</button>
+      <button class="tab-button" data-tab="questlist">Quest List</button>
+      <button class="tab-button" data-tab="pathfinder">Pathfinder</button>
+    </div>
+    <div class="tab-content" id="tab-completed">
+      <div id="completed-quests-grid" class="completed-grid"></div>
+    </div>
+    <div class="tab-content" id="tab-achievements" style="display:none;">
+      <div id="achievements-list"> 
+      </div>
+    </div>
+    <div class="tab-content" id="tab-questlist" style="display:none;">
+      <!-- Filter Controls -->
+      <div class="questlist-filters">
+        <div class="filter-group">
+          <label>Filter by:</label>
+          <select id="questlist-filter">
+            <option value="all">All Quests</option>
+            <option value="active">Active Quests (with timer)</option>
+            <option value="paintersPath">Painting Path</option>
+            <option value="sketcherPath">Sketching Path</option>
+            <option value="watercoloursPath">Watercolor Path</option>
+            <option value="3DPath">3D Path</option>
+          </select>
+        </div>
+        <div class="filter-stats">
+          <span id="questlist-count">0 quests</span>
+        </div>
+      </div>
+      <!-- Quest List Container -->
+      <div id="questlist-container" class="questlist-container">
+      </div>
+    </div>
+    <div class="tab-content" id="tab-pathfinder" style="display:none;">
+     <div class="pathfinder-container">
+      <div id="pathfinder-intro"></div>
+      <div id="pathfinder-questions-container"></div>
+        <div id="pathfinder-results-container" style="display: none;">
+          <h4 style="color: white; margin-bottom: 10px;">Based on your answers, your top 5 recommended quests are:</h4>
+          <div id="pathfinder-quest-list" class="questlist-container"></div>
+          <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button id="pathfinder-retake" class="tab-button" style="flex: 1;">Retake Questionnaire</button>
+          </div>
+        </div>
+          <div id="pathfinder-submit-container" style="margin-top: 20px;">
+          <button id="pathfinder-submit" class="tab-button" style="width: 100%; padding: 12px;">Find My Path</button>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------- Rubric Overlay ----------------------------------------------------->
+<div id="rubric-overlay" class="quest-overlay" style="display:none;">
+  <div class="quest-box rubric-box">
+    <span class="close-btn" id="close-rubric">✖</span>
+
+    <h2 id="rubric-title">Rubric</h2>
+    <div id="rubric-content"></div>
+  </div>
+</div>
+<!------------------------------------------- Profile Button ------------------------------------------------------>
+<button id="profile-btn" class="profile-btn">
+  <img src="profile.png" alt="Profile" />
+</button>
+<!--------------------------------------------PROFILE OVERLAY------------------------------------------------------>
+<div id="profile-overlay" class="overlay" style="display:none;">
+    <div id="profile-popup" class="popup">
+        <h2 class="profile-title">Student's Profile</h2>
+        <button id="profile-close" class="close-btn">×</button>
+        <div class="profile-grid">
+          <!-- LEFT COLUMN -->
+            <div class="profile-left">
+                <div class="avatar-wrapper">
+                  <img id="student-avatar" src="profile.png" alt="avatar">
+                  <button id="change-avatar-btn" class="avatar-gear">⚙️</button>
+                </div>
+                <div id="student-name" class="student-name"></div>
+                                <div class="profile-teacher-name">
+                    Teacher: <span id="profile-teacher-name">—</span>
+                                </div>
+                <div class="profile-left">  
+                 <div class="profile-action-buttons">
+                  <button id="logout-profile-btn" class="profile-btn-small logout-btn">🚪 Logout</button>
+                 </div>
+                </div>
+                <div class="profile-money">
+                <a href="#" id="profile-reward-link" class="money-link" >Reward:</a><span id="profile-total-coins" class="money-amount">0</span>
+                </div>
+            </div>
+          <!-- CENTER COLUMN -->
+            <div class="profile-center" id="radar-chart-container">
+             <canvas id="radar-chart"></canvas>
+             <div id="radar-tooltip" class="radar-tooltip"></div>
+            </div>
+          <!-- RIGHT COLUMN -->
+            <div class="profile-right">
+              <h3>Assessment</h3>
+            <h3>Standards/Domains/Objectives</h3>
+            <ul id="standards-list"></ul>
+            <!-- art standards - dynamically populated based on framework -->
+            <table id="standards-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Formative Grade</th>
+                        <th>Summative (MVP) Grade</th>
+                    </tr>
+                </thead>
+                <tbody id="standards-table-body">
+                    <tr><td colspan="3">Loading...</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- BADGE ROW - Full width below all columns -->
+            <div class="badge-row">
+              <div class="badge-title">
+                <span class="filigree-left">⚜—————✧—————⚜</span>
+                <span class="badge-title-text" id="badge-title">Artheim Art Badges</span>
+                <span class="filigree-right">⚜—————✧—————⚜</span>
+              </div>
+              <div class="badge-container" id="badge-container">
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------------- Rewards by Standard Overlay ----------------------------------------------->
+<div id="rewards-overlay" class="rewards-overlay">
+    <div id="rewards-box">
+        <span id="close-rewards">&times;</span>
+        <h2 id="rewards-title">Rewards by Standard</h2>
+        
+        <div id="rewards-total-summary"></div>
+        
+        <table class="rewards-table">
+            <thead>
+                <tr>
+                    <th>Standard Code</th>
+            <th>Standard Description</th>
+            <th>Earned</th>
+            <th>Deducted</th>
+            <th>Net Available</th>
+            <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="rewards-table-body">
+                <!-- Will be populated by JavaScript -->
+            </tbody>
+        </table>
+        
+        <div style="text-align: center; margin-top: 15px; color: #aaddff; font-size: 0.9em;">
+            <em>Rewards are calculated as 10 💰 per grade point earned</em>
+        </div>
+    </div>
+</div>
+<!-------------------------- Restriction Popup (One Quest at a Time) ----------------------------------------------->
+<div id="restriction-popup" class="restriction-popup" style="display: none;">
+    <div class="restriction-content">
+        <h3>⚔️ Quest Restriction ⚔️</h3>
+        <p id="restriction-message">You already have an active quest. Please finish it before starting a new one.</p>
+        <div id="active-quest-link-container">
+            <a href="#" id="active-quest-link" class="restriction-link"></a>
+        </div>
+        <button class="restriction-close" onclick="closeRestrictionPopup()">I Understand</button>
+    </div>
+</div>
+<!------------------------------------ Prerequisite Popup (MVP Requirements) -------------------------------------->
+<div id="prerequisite-popup" class="restriction-popup" style="display: none;">
+    <div class="restriction-content">
+        <h3>🏆 MVP Requirements 🏆</h3>
+        <p id="prerequisite-message"></p>
+        <div id="prerequisite-quests-list" style="margin: 15px 0; color: #f0e6d2; font-size: 16px;"></div>
+        <button class="restriction-close" onclick="closePrerequisitePopup()">I Understand</button>
+    </div>
+</div>
+<!------------------------Restriction Popup (Accept quest before access to finished works and links)--------------->
+<div id="accept-quest-restriction-popup" class="restriction-popup" style="display: none;">
+    <div class="restriction-content">
+        <h3>⚠️ You must accept the quest to proceed ⚠️</h3>
+        <p id="accept-quest-restriction-message"></p>
+        <button class="restriction-close" onclick="closeAcceptQuestRestrictionPopup()">OK</button>
+    </div>
+</div>
+<!--------------------------------- New Quest Announcement Overlay ------------------------------------------------>
+<div id="new-quest-overlay" class="new-quest-overlay" style="display: none;">
+    <div id="new-quest-box">
+        <div class="new-quest-header">
+            <h2>✨ New Quests Added! ✨</h2>
+            <button id="close-new-quest" class="close-new-quest">×</button>
+        </div>
+        <div class="new-quest-content">
+            <p>New adventures await in Artheim:</p>
+            <ul id="new-quest-list"></ul>
+        </div>
+        <div class="new-quest-footer">
+            <button id="new-quest-continue" class="new-quest-btn">Continue Journey</button>
+        </div>
+    </div>
+</div>
+<!--------------------------------------- Student Calendar Modal ------------------------------------------------->
+<div id="calendar-modal" class="quest-overlay" style="display: none;">
+    <div class="quest-box" style="max-width: 800px; width: 90%;">
+        <span id="close-calendar" class="close-btn">✖</span>
+        <h2 style="color: #ffd700; text-align: center; margin-bottom: 20px;">📅 My Quest Calendar</h2>
+        
+        <!-- Calendar Navigation -->
+        <div class="calendar-nav">
+            <button id="calendar-prev-month" class="calendar-nav-btn">◀</button>
+            <h3 id="calendar-month-year" style="margin: 0 20px;">May 2026</h3>
+            <button id="calendar-next-month" class="calendar-nav-btn">▶</button>
+        </div>
+        
+        <!-- Calendar Grid -->
+        <div class="calendar-weekdays">
+            <div class="calendar-weekday">Mon</div>
+            <div class="calendar-weekday">Tue</div>
+            <div class="calendar-weekday">Wed</div>
+            <div class="calendar-weekday">Thu</div>
+            <div class="calendar-weekday">Fri</div>
+            <div class="calendar-weekday weekend">Sat</div>
+            <div class="calendar-weekday weekend">Sun</div>
+        </div>
+        <div id="student-calendar-grid" class="calendar-grid">
+            <!-- Calendar dates will be dynamically generated -->
+        </div>
+        
+        <div class="calendar-legend" style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div style="width: 20px; height: 20px; background: rgba(76, 175, 80, 0.3); border-radius: 4px;"></div>
+                <span style="font-size: 12px;">Teacher Note</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div style="width: 20px; height: 20px; background: rgba(255, 0, 0, 0.3); border-radius: 4px;"></div>
+                <span style="font-size: 12px;">No Class Day</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div style="width: 20px; height: 20px; background: rgba(0, 150, 255, 0.3); border-radius: 4px;"></div>
+                <span style="font-size: 12px;">Quest Active Period</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div style="width: 20px; height: 20px; background: rgba(0, 150, 255, 0.6); border-radius: 4px;"></div>
+                <span style="font-size: 12px;">Quest Due Date</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div style="width: 20px; height: 20px; background: rgba(100, 100, 100, 0.3); border-radius: 4px;"></div>
+                <span style="font-size: 12px;">Completed Quest Period</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <span style="font-size: 16px;">✅</span>
+                <span style="font-size: 12px;">Completed On Time</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------------- Submit Artwork for Contest Modal --------------------------------------->
+<div id="submit-contest-work-modal" class="quest-overlay" style="display: none;">
+    <div class="quest-box" style="max-width: 500px; width: 90%;">
+        <span id="close-submit-contest-modal" class="close-btn" style="position: absolute; top: 15px; right: 20px;">✖</span>
+        
+        <h2 style="color: #ffd700; text-align: center; margin-bottom: 20px;">🎨 Submit Artwork</h2>
+        
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label style="color: #ffd700; margin-bottom: 5px; display: block;">Title *</label>
+            <input type="text" id="contest-submission-title" class="auth-input" placeholder="e.g., Dragon's Fury" style="width: 100%;">
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label style="color: #ffd700; margin-bottom: 5px; display: block;">Description</label>
+            <textarea id="contest-submission-description" rows="3" class="auth-input" placeholder="Describe your artwork..." style="width: 100%;"></textarea>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label style="color: #ffd700; margin-bottom: 5px; display: block;">Image *</label>
+            <input type="file" id="contest-submission-image" accept="image/*" class="auth-input" style="width: 100%;">
+            <div id="contest-submission-filename" style="font-size: 11px; color: #aaa; margin-top: 5px; display: none;"></div>
+        </div>        
+        <div id="contest-submission-message" class="auth-message" style="margin-bottom: 15px;"></div>
+        
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button id="cancel-submit-contest-btn" class="auth-btn" style="background: #666;">Cancel</button>
+            <button id="confirm-submit-contest-btn" class="auth-btn auth-btn-primary">Submit Artwork</button>
+        </div>
+    </div>
+</div>
+<!-- Student Work Details Modal (for contest artwork) -->
+<div id="teacher-work-modal" class="quest-overlay" style="display: none;">
+    <div class="quest-box" style="max-width: 500px; width: 90%;">
+        <span class="close-btn" style="position: absolute; top: 15px; right: 20px;">✖</span>
+        <div id="teacher-work-content"></div>
+    </div>
+</div>
+<!-- Forgot Password Modal (Student) -->
+<div id="forgot-password-modal" class="forgot-password-modal">
+    <div class="forgot-password-content">
+        <h3>Reset Password</h3>
+        <p>Enter your email address and we'll send you a link to reset your password.</p>
+        <input type="email" id="reset-email-input" class="forgot-password-input" placeholder="Your email address">
+        <div class="forgot-password-buttons">
+            <button id="reset-cancel-btn" class="forgot-password-cancel">Cancel</button>
+            <button id="reset-submit-btn" class="forgot-password-submit">Send Reset Link</button>
+        </div>
+        <div id="reset-message" class="forgot-password-message"></div>
+    </div>
+</div>
+<!------------------------------------ Supabase client library ---------------------------------------------------->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Initialize Supabase -->
+<script>
+   const SUPABASE_URL = 'https://qzxvwoyigrrpdywvhckk.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_ncHOn7TNowbRZS9s-RYeuA_2m8ka_Iu';
+    window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log('Supabase initialized:', window.supabase);
+</script>
+<script src="script.js"></script>
+</body>
+</html>
