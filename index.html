@@ -3,112 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <title>Quest Map</title>
-    <link rel="stylesheet" href="style.css?v=20260525"> 
+    <link rel="stylesheet" href="style.css?v=20262311"> 
     <link rel="icon" type="image/png" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 </head>
 <body>
+    <div class="snow" aria-hidden="true"></div>
+    <!------------------------ Active Quest Timer Button  --------------------------------------------------------->
+<div id="floating-active-quest" title="Active Quest" style="display: none;">
+    ⏱️ <span id="active-quest-timer">--:--</span>
+</div>
 
-<div id="map-container">
-    <div id="map-warning-overlay" class="map-overlay"></div>
-    <img id="map-image" src="map.jpg" alt="World Map">
-
+<!------------------------------------- SINGLE SCROLLABLE MAP CONTAINER ------------------------------------------->
+<div id="map-container" class="ms-map-container">
+    
+    <!-- Single map image (one large scrollable map) -->
+    <img id="map-image" src="ms-map.jpg" alt="High School Art Map">
 
     <!-- Art Battle Hotspot -->
-    <div class="hotspot debug artbattle-hotspot" data-map="map1" data-city="artbattle" style="top:59%; left:47%;" title="Art Battle Competition"></div>
+    <div class="hotspot debug artbattle-hotspot" data-city="artbattle" style="top:86.5%; left:53.7%;" title="Art Battle Competition"></div>
 
-    <!-- quests for map1 painter's path-->
-    <div class="hotspot debug" data-map="map1" style="top:51.5%; left:48%;" data-city="quest1"></div>
-    <div class="hotspot debug" data-map="map1" style="top:47.5%; left:35%;" data-city="quest2"></div>
-    <div class="hotspot debug" data-map="map1" style="top:59.5%; left:35%;" data-city="quest3"></div>
-    <div class="hotspot debug" data-map="map1" style="top:66.5%; left:30.3%;" data-city="quest4"></div>
-    <div class="hotspot debug" data-map="map1" style="top:57.5%; left:23.5%;" data-city="quest5"></div>
-    <div class="hotspot debug" data-map="map1" style="top:43.9%; left:23%;" data-city="quest8"></div>
-    <div class="hotspot debug" data-map="map1" style="top:39.5%; left:65%;" data-city="quest6"></div>
-    <div class="hotspot debug" data-map="map1" style="top:47%; left:9%;" data-city="quest7"></div>
-    <div class="hotspot debug" data-map="map1" style="top:41%; left:28%;" data-city="quest9"></div>
-    <div class="hotspot debug" data-map="map1" style="top:22%; left:33%;" data-city="quest10"></div>
-    <div class="hotspot debug" data-map="map1" style="top:72.2%; left:20%;" data-city="quest11"></div>
-    <div class="hotspot debug" data-map="map1" style="top:37.3%; left:55.2%;" data-city="quest13"></div>
-    <div class="hotspot debug" data-map="map1" style="top:29.5%; left:44%;" data-city="quest14"></div>
-    <div class="hotspot debug" data-map="map1" style="top:39.5%; left:40.5%;" data-city="quest15"></div>
-    <div class="hotspot debug" data-map="map1" style="top:52.5%; left:72.5%;" data-city="quest19"></div>
-    <div class="hotspot debug" data-map="map1" style="top:36.5%; left:64.5%;" data-city="quest33"></div>
-    <div class="hotspot debug" data-map="map1" style="top:35%; left:11%;" data-city="quest34"></div>
-    <div class="hotspot debug" data-map="map1" style="top:73%; left:84.5%;" data-city="quest35"></div>
-    <div class="hotspot debug" data-map="map1" style="top:55.2%; left:87%;" data-city="quest36"></div>
-    <div class="hotspot debug" data-map="map1" style="top:51.5%; left:62%;" data-city="quest37"></div>
-    <div class="hotspot debug" data-map="map1" style="top:9.8%; left:76%;" data-city="quest51"></div>
-    <div class="hotspot debug" data-map="map1" style="top:5%; left:46.5%;" data-city="quest52"></div>
-    <div class="hotspot debug" data-map="map1" style="top:91.5%; left:78%;" data-city="quest55"></div>
-    <div class="hotspot debug" data-map="map1" style="top:93.5%; left:96%;" data-city="quest64"></div>
-    <div class="hotspot debug" data-map="map1" style="top:9%; left:63%;" data-city="quest66"></div>
-    <div class="hotspot debug" data-map="map1" style="top: 93.2%; left:58.5%;" data-city="quest69"></div>
-    <div class="hotspot debug" data-map="map1" style="top: 76.2%; left:46.5%;" data-city="quest75"></div>
-    <div class="hotspot debug" data-map="map1" style="top: 84.5%; left:56.3%;" data-city="quest80"></div>
-
-    <!--quests for map1 sketcher's path-->
-    <div class="hotspot debug" data-map="map1" style="top:71.5%; left:60%;" data-city="quest12"></div>
-    <div class="hotspot debug" data-map="map1" style="top:61.5%; left:70.5%;" data-city="quest18"></div>
-    <div class="hotspot debug" data-map="map1" style="top:53.8%; left:67.5%;" data-city="quest20"></div>
-    <div class="hotspot debug" data-map="map1" style="top:31%; left:89.5%;" data-city="quest21"></div>
-    <div class="hotspot debug" data-map="map1" style="top:46.5%; left:92%;" data-city="quest29"></div>
-    <div class="hotspot debug" data-map="map1" style="top:84.5%; left:98%;" data-city="quest30"></div>
-    <div class="hotspot debug" data-map="map1" style="top:72.5%; left:76%;" data-city="quest39"></div>
-    <div class="hotspot debug" data-map="map1" style="top:26.2%; left:23%;" data-city="quest41"></div>
-    <div class="hotspot debug" data-map="map1" style="top:36.5%; left:45.5%;" data-city="quest42"></div>
-    <div class="hotspot debug" data-map="map1" style="top:67%; left:90%;" data-city="quest43"></div>
-    <div class="hotspot debug" data-map="map1" style="top:13.3%; left:83.5%;" data-city="quest44"></div>
-    <div class="hotspot debug" data-map="map1" style="top:7.8%; left:22%;" data-city="quest45"></div>
-    <div class="hotspot debug" data-map="map1" style="top:17.5%; left:73.5%;" data-city="quest46"></div>
-    <div class="hotspot debug" data-map="map1" style="top:45%; left:74.5%;" data-city="quest47"></div>
-    <div class="hotspot debug" data-map="map1" style="top:60.5%; left:82.5%;" data-city="quest48"></div>
-    <div class="hotspot debug" data-map="map1" style="top:5.2%; left:58%;" data-city="quest72"></div>
-    <div class="hotspot debug" data-map="map1" style="top:81%; left:37%;" data-city="quest73"></div>
-    <div class="hotspot debug" data-map="map1" style="top:99.2%; left:47.5%;" data-city="quest78"></div>
-    <div class="hotspot debug" data-map="map1" style="top:55.2%; left:9.8%;" data-city="quest79"></div>
-
+    <!-- ============================================= -->
+    <!-- PAINTER'S PATH QUESTS (scrollable list)      -->
+    <!-- ============================================= -->
+    <div class="hotspot debug" style="top:59%; left:59.8%;" data-city="quest1"></div>
+    <div class="hotspot debug" style="top:54.8%; left:51%;" data-city="quest2"></div>
+    <div class="hotspot debug" style="top:52%; left: 45.5%;" data-city="quest3"></div>
+    <div class="hotspot debug" style="top:51.3%; left:60.4%;" data-city="quest4"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:59.3%; left:51.5%;" data-city="quest5"></div>
+    <div class="hotspot debug" style="top:45.9%; left:55.1%;" data-city="quest6"></div>
+    <div class="hotspot debug" style="top:46.1%; left:41.1%;" data-city="quest7"></div>
+    <div class="hotspot debug" style="top:16.97%; left:57%;" data-city="quest8"></div>
+    <div class="hotspot debug" style="top:9.5%; left:56%;" data-city="quest9"></div>
+    <div class="hotspot debug" style="top:40.45%; left:64.8%;" data-city="quest10"></div>
+    <div class="hotspot debug" style="top:47.3%; left:49.9%;" data-city="quest11"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:46.4%; left:87.8%;" data-city="quest13"></div>
+    <div class="hotspot debug" style="top:29%; left:71.6%;" data-city="quest14"></div>
+    <div class="hotspot debug" style="top:33.9%; left:98%;" data-city="quest15"></div>
+    <div class="hotspot debug" style="top:23.5%; left:91.7%;" data-city="quest19"></div>
+    <div class="hotspot debug" style="top:38.3%; left:39.4%;" data-city="quest33"></div>
+    <div class="hotspot debug" style="top:61.5%; left:26%;" data-city="quest34"></div>
+    <div class="hotspot debug" style="top:36%; left:60.5%;" data-city="quest35"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:27.95%; left:58.5%;" data-city="quest36"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:39.95%; left:77.1%;" data-city="quest37"></div>
+    <div class="hotspot debug" style="top:4.3%; left:23%;" data-city="quest51"></div> <!--xmas-->
+    <div class="hotspot debug" style="top:15.26%; left:15%;" data-city="quest52"></div> <!--hween-->
+    <div class="hotspot debug" style="top:47.48%; left:45.7%;" data-city="quest55"></div>
+    <div class="hotspot debug" style="top:35.5%; left:96.3%;" data-city="quest64"></div>
+    <div class="hotspot debug" style="top:49.2%; left:12.7%;" data-city="quest66"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:2.4%; left:86%;" data-city="quest67"></div>
+    <div class="hotspot debug" style="top:33.2%; left:7.4%;" data-city="quest69"></div>
+    <div class="hotspot debug" style="top:22.1%; left:60.4%;" data-city="quest80"></div>
+    <div class="hotspot debug" style="top:69.5%; left:21.5%;" data-city="quest101"></div>
+    <div class="hotspot debug" style="top:69.8%; left:28.5%;" data-city="quest102"></div>
+    <div class="hotspot debug" style="top:55.1%; left:17%;" data-city="quest108"></div>
+    <div class="hotspot debug" style="top:5.3%; left:83%;" data-city="quest109"></div>
+    <div class="hotspot debug" style="top:64.7%; left:32.1%;" data-city="quest110"></div><!--MVP-->
+    <div class="hotspot debug" style="top:73.2%; left:77.1%;" data-city="quest111"></div><!--MVP-->
     
-    <!--quests for map2 watercolour's path-->
-    <div class="hotspot debug" data-map="map2" style="top:47.6%; left:49.5%;" data-city="quest16"></div>
-    <div class="hotspot debug" data-map="map2" style="top:2%; left:48.5%;" data-city="quest17"></div>
-    <div class="hotspot debug" data-map="map2" style="top:37.5%; left:48.5%;" data-city="quest22"></div>
-    <div class="hotspot debug" data-map="map2" style="top:63%; left:94.2%;" data-city="quest23"></div>
-    <div class="hotspot debug" data-map="map2" style="top:95.8%; left:80%;" data-city="quest24"></div>
-    <div class="hotspot debug" data-map="map2" style="top:58.3%; left:81%;" data-city="quest25"></div>
-    <div class="hotspot debug" data-map="map2" style="top:46.6%; left:14.5%;" data-city="quest26"></div>
-    <div class="hotspot debug" data-map="map2" style="top:76%; left:96.5%;" data-city="quest27"></div>
-    <div class="hotspot debug" data-map="map2" style="top:87.5%; left:52.2%;" data-city="quest32"></div>
-    <div class="hotspot debug" data-map="map2" style="top:66.2%; left:52.3%;" data-city="quest49"></div>
-    <div class="hotspot debug" data-map="map2" style="top:64.4%; left:65.3%;" data-city="quest50"></div>
-    <div class="hotspot debug" data-map="map2" style="top:31%; left:23.5%;" data-city="quest74"></div>
-
-    <!--quests for map3 3D Artist's path-->
-    <div class="hotspot debug" data-map="map3" style="top:20.3%; left:18%;" data-city="quest53"></div>
-    <div class="hotspot debug" data-map="map3" style="top:72.45%; left:78.2%;" data-city="quest54"></div>
-    <div class="hotspot debug" data-map="map3" style="top:46.2%; left:68.5%;" data-city="quest56"></div>
-    <div class="hotspot debug" data-map="map3" style="top:34%; left:78%;" data-city="quest57"></div>
-    <div class="hotspot debug" data-map="map3" style="top:63%; left:95.3%;" data-city="quest58"></div>
-    <div class="hotspot debug" data-map="map3" style="top:36.3%; left:8%;" data-city="quest59"></div>
-    <div class="hotspot debug" data-map="map3" style="top:52.1%; left:49.8%;" data-city="quest60"></div>
-    <div class="hotspot debug" data-map="map3" style="top:13%; left:38.4%;" data-city="quest61"></div>
-    <div class="hotspot debug" data-map="map3" style="top:76.3%; left:16.3%;" data-city="quest62"></div>
-    <div class="hotspot debug" data-map="map3" style="top:31.6%; left:29.8%;" data-city="quest63"></div>
-    <div class="hotspot debug" data-map="map3" style="top:6.8%; left:25.2%;" data-city="quest67"></div>
-    <div class="hotspot debug" data-map="map3" style="top:12%; left:88%;" data-city="quest68"></div>
-    <div class="hotspot debug" data-map="map3" style="top:59.5%; left:12%;" data-city="quest70"></div>
-    <div class="hotspot debug" data-map="map3" style="top: 94%; left:89.8%;" data-city="quest71"></div>
-    <div class="hotspot debug" data-map="map3" style="top: 90.26%; left:2.3%;" data-city="quest76"></div>
-    <div class="hotspot debug" data-map="map3" style="top: 4.9%; left:14.5%;" data-city="quest77"></div>
-    <div class="hotspot debug" data-map="map3" style="top: 5.4%; left:70%;" data-city="quest81"></div>
 
 
- </div>
-<!-- Floating Navigation for Maps 2 & 3 (Gallery only) -->
-<div id="floating-nav" class="floating-nav" style="display: none;">
-    <div class="floating-nav-item" id="floating-gallery" title="View Art Gallery">
-        🖼️Gallery 
+
+
+    <!-- ============================================= -->
+    <!-- SKETCHER'S PATH QUESTS (scrollable list)     -->
+    <!-- ============================================= -->
+    <div class="hotspot debug" style="top:37.5%; left:35%;" data-city="quest12"></div>
+    <div class="hotspot debug" style="top:60.5%; left:20.1%;" data-city="quest18"></div>
+    <div class="hotspot debug" style="top:55.9%; left:37.2%;" data-city="quest20"></div>
+    <div class="hotspot debug" style="top:47.5%; left:35%;" data-city="quest21"></div>
+    <div class="hotspot debug" style="top:52%; left:38.4%;" data-city="quest29"></div>
+    <div class="hotspot debug" style="top:41.5%; left:26.4%;" data-city="quest30"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:47.8%; left:26.2%;" data-city="quest39"></div>
+    <div class="hotspot debug" style="top:34.1%; left:22%;" data-city="quest41"></div>
+    <div class="hotspot debug" style="top:33%; left:15%;" data-city="quest42"></div>
+    <div class="hotspot debug" style="top:29.5%; left:78%;" data-city="quest43"></div>
+    <div class="hotspot debug" style="top:24.5%; left:76%;" data-city="quest44"></div>
+    <div class="hotspot debug" style="top:49.6%; left:6%;" data-city="quest45"></div>
+    <div class="hotspot debug" style="top:46.6%; left:97.8%;" data-city="quest46"></div>
+    <div class="hotspot debug" style="top:60%; left:14.6%;" data-city="quest47"></div>
+    <div class="hotspot debug" style="top:41.9%; left:5%;" data-city="quest48"></div>
+    <div class="hotspot debug" style="top:41.2%; left:16.2%;" data-city="quest72"></div> <!--MVP change colour-->
+    <div class="hotspot debug" style="top:29.5%; left:90.2%;" data-city="quest73"></div>
+    <div class="hotspot debug" style="top:32%; left:42.5%;" data-city="quest75"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:4.5%; left:95%;" data-city="quest78"></div><!--MVP-->
+    <div class="hotspot debug" style="top:55.5%; left:5.2%;" data-city="quest79"></div><!--MVP change colour-->
+    <div class="hotspot debug" style="top:44.2%; left:95%;" data-city="quest85"></div>
+    <div class="hotspot debug" style="top: 26.5%; left:96%;" data-city="quest89"></div>
+    <div class="hotspot debug" style="top:4.2%; left:29.9%;" data-city="quest90"></div>
+    <div class="hotspot debug" style="top:55.8%; left:24.8%;" data-city="quest107"></div>
+    <div class="hotspot debug" style="top:53%; left:31.4%;" data-city="quest115"></div><!--MVP-->
+
+    <!-- ============================================= -->
+    <!-- WATERCOLOR PATH QUESTS (scrollable list)     -->
+    <!-- ============================================= -->
+    <div class="hotspot debug" style="top:21.8%; left:31.2%;" data-city="quest16"></div><!--MVP-->
+    <div class="hotspot debug" style="top:1.2%; left:27%;" data-city="quest17"></div><!--MVP-->
+    <div class="hotspot debug" style="top:26.1%; left:33.7%;" data-city="quest22"></div>
+    <div class="hotspot debug" style="top:7.6%; left:10.2%;" data-city="quest23"></div>
+    <div class="hotspot debug" style="top:7.9%; left:18%;" data-city="quest24"></div>
+    <div class="hotspot debug" style="top:29%; left:19.6%;" data-city="quest25"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:14.1%; left:47.7%;" data-city="quest26"></div>
+    <div class="hotspot debug" style="top:14.9%; left:10%;" data-city="quest27"></div><!--MVP-->
+    <div class="hotspot debug" style="top:21%; left:14.3%;" data-city="quest32"></div>
+    <div class="hotspot debug" style="top:3.6%; left:40%;" data-city="quest49"></div>
+    <div class="hotspot debug" style="top:41.5%; left:41%;" data-city="quest50"></div>
+    <div class="hotspot debug" style="top:60.9%; left:3.8%;" data-city="quest65"></div>
+    <div class="hotspot debug" style="top:46.1%; left:18.4%;" data-city="quest74"></div>
+    <div class="hotspot debug" style="top:51.7%; left:20.2%;" data-city="quest103"></div>
+    <div class="hotspot debug" style="top:73.6%; left:47.2%;" data-city="quest104"></div>
+
+
+
+    <!-- ============================================= -->
+    <!-- 3D PATH QUESTS (scrollable list)              -->
+    <!-- ============================================= -->
+    <div class="hotspot debug" style="top:9.5%; left:61.2%;" data-city="quest53"></div><!--MVP-->
+    <div class="hotspot debug" style="top:34%; left:90%;" data-city="quest54"></div><!--MVP-->
+    <div class="hotspot debug" style="top:21.6%; left:85%;" data-city="quest56"></div><!--MVP-->
+    <div class="hotspot debug" style="top:11.3%; left:50.6%;" data-city="quest57"></div><!--MVP-->
+    <div class="hotspot debug" style="top:43.5%; left:82%;" data-city="quest58"></div> <!--MVP-->
+    <div class="hotspot debug" style="top:3%; left:65%;" data-city="quest59"></div>
+    <div class="hotspot debug" style="top:14%; left:93%;" data-city="quest60"></div>
+    <div class="hotspot debug" style="top:6%; left:71%;" data-city="quest61"></div>
+    <div class="hotspot debug" style="top:31.7%; left:64.5%;" data-city="quest62"></div>
+    <div class="hotspot debug" style="top:9.1%; left:96%;" data-city="quest63"></div>
+    <div class="hotspot debug" style="top:2.1%; left:60%;" data-city="quest68"></div>
+    <div class="hotspot debug" style="top:13%; left:87%;" data-city="quest70"></div><!--MVP-->
+    <div class="hotspot debug" style="top:35.6%; left:68.6%;" data-city="quest71"></div><!--MVP-->
+    <div class="hotspot debug" style="top:35%; left:49.4%;" data-city="quest76"></div><!--MVP-->
+    <div class="hotspot debug" style="top:13.6%; left:97.3%;" data-city="quest77"></div>
+    <div class="hotspot debug" style="top:14.8%; left:67%;" data-city="quest81"></div>
+    <div class="hotspot debug" style="top:19.2%; left:3%;" data-city="quest82"></div><!--MVP-->
+    <div class="hotspot debug" style="top:42.1%; left:73.5%;" data-city="quest83"></div><!--MVP-->
+    <div class="hotspot debug" style="top:65%; left:23.5%;" data-city="quest84"></div><!--MVP-->
+    <div class="hotspot debug" style="top:50.2%; left:52.4%;" data-city="quest88"></div>
+    <div class="hotspot debug" style="top:68.8%; left:39.2%;" data-city="quest105"></div>
+    <div class="hotspot debug" style="top:76.1%; left:26.5%;" data-city="quest106"></div>
+    <div class="hotspot debug" style="top:43.9%; left:9.8%;" data-city="quest112"></div><!--MVP-->
+    <div class="hotspot debug" style="top:65.8%; left:60.2%;" data-city="quest113"></div><!--MVP-->
+    <div class="hotspot debug" style="top:9.1%; left:74.4%;" data-city="quest114"></div><!--MVP-->
+
+    <!-- ============================================= -->
+    <!-- RESEARCH QUESTS                               -->
+    <!-- ============================================= -->
+    <div class="hotspot debug" style="top:23%; left:6.2%;" data-city="quest91"></div>
+    <div class="hotspot debug" style="top:26%; left:7.8%;" data-city="quest92"></div>
+    <div class="hotspot debug" style="top:10%; left:25.4%;" data-city="quest93"></div>
+    <div class="hotspot debug" style="top:8.7%; left:35%;" data-city="quest94"></div>
+    <div class="hotspot debug" style="top:17%; left:39.9%;" data-city="quest95"></div>
+    <div class="hotspot debug" style="top:20.9%; left:45.15%;" data-city="quest96"></div>
+
+    <!-- ============================================= -->
+    <!-- MATERIAL CARE                                 -->
+    <!-- ============================================= -->
+    <div class="hotspot debug" style="top:12.6%; left:60%;" data-city="quest97"></div>
+</div>
+    
+<!------------------------------------- Floating Action Buttons Cluster ------------------------------------------->
+<div id="floating-cluster" role="toolbar" aria-label="Quick actions">
+
+    <!-- LEFT-SIDE BUTTONS (expand leftwards) -->
+    <button type="button" class="cluster-btn cluster-expand-left" id="cluster-gallery" title="Gallery">
+        <span class="cluster-label">Gallery</span>
+        <span class="cluster-icon">🖼️</span>
+    </button>
+
+    <button type="button" class="cluster-btn cluster-expand-left" id="cluster-achievements" title="Achievements">
+        <span class="cluster-label"> Resources and Achievements</span>
+        <span class="cluster-icon">🏆</span>
+    </button>
+
+    <!-- CENTER BUTTON (search, click-to-toggle) -->
+    <div class="cluster-search-wrapper" id="cluster-search-wrapper">
+        <!-- Input floats above-left; results panel sits to the right of the input -->
+        <div class="cluster-search-panel" id="cluster-search-panel" aria-hidden="true">
+            <input
+                type="text"
+                id="cluster-search-input"
+                class="cluster-search-input"
+                placeholder="Search quest"
+                autocomplete="off">
+            <div class="cluster-search-results" id="cluster-search-results"></div>
+        </div>
+        <button type="button" class="cluster-btn cluster-btn-search" id="cluster-search" title="Search">
+            <span class="cluster-icon">🔍</span>
+        </button>
     </div>
+
+    <!-- RIGHT-SIDE BUTTONS (expand rightwards) -->
+    <button type="button" class="cluster-btn cluster-expand-right" id="cluster-tree" title="Quest Tree">
+        <span class="cluster-icon">🌳</span>
+        <span class="cluster-label">Quest Tree</span>
+    </button>
+
+    <button type="button" class="cluster-btn cluster-expand-right" id="cluster-calendar" title="Calendar">
+        <span class="cluster-icon">📅</span>
+        <span class="cluster-label">Calendar</span>
+    </button>
+
 </div>
 <!----------------------------------------- Dropdown menu container ----------------------------------------------->
 <div id="dropdown-container">
@@ -123,36 +216,20 @@
     <select id="mvp-quests" style="display:none;">
         <option value="">Select MVP Quest</option>
     </select>
-        <!-- map change functionality-->
-   <div id="map-switcher">
-        <select id="map-selector">
-        <option value="map1">Painting Wing</option>
-        <option value="map2">Watercolor Wing</option>
-        <option value="map3">3D World</option>
-
-        <!-- Add future maps here -->
-    </select>
-
-        <!--search engine info-->
-    <div id="quest-search-container">
-        <input
-            type="text"
-            id="quest-search"
-            placeholder="Search quest"
-            autocomplete="off"/>
-    <div id="quest-search-results"></div>
-    </div>
-</div>    
 </div>
 <!----------------------------------------- QUEST POP UP OVERLAY--------------------------------------------------->
 <div id="quest-overlay">
     <div id="quest-box">
         <span id="close-quest" onclick="closeQuest()">✖</span>
-        <!-- First row: Painter path, timer button, completed checkbox, difficulty -->
+
+        <!-- First row: Paths, Cancel Quest, Difficulty -->
         <div class="quest-row">
             <div class="quest-cell">
-                <strong> Paths:</strong>
+                <strong>Paths:</strong>
                 <span id="quest-paths"></span>
+            </div>
+            <div class="quest-cell cancel-quest-cell" id="cancel-quest-cell">
+                <strong id="cancel-quest-btn" style="cursor: pointer;">Cancel Quest</strong>
             </div>
             <div class="quest-cell difficulty">
                 <strong>Difficulty:</strong>
@@ -160,104 +237,112 @@
             </div>
         </div>
 
-        <!-- Second row: Quest title -->
+        <!-- Second row: Title / Check Box | Accept / Timer | Rationale -->
         <div class="quest-row">
             <div class="quest-cell full">
                 <h2 id="quest-title"></h2>
-                
+                <!-- Check Box-->
+                  <label id="quest-interest-label" class="quest-interest-label" style="display: none;">
+                  <input type="checkbox" id="quest-interest-checkbox">
+                  <span class="quest-interest-tooltip">I am interested in this quest</span>
+                  </label>
             </div>
-            <div class="quest-cell timer-cell">
-                <strong>Timer:</strong>
-                <div class="timer-controls">
-                    <button id="quest-accept" class="timer-accept-btn">Accept Quest</button>
-                    <div id="timer-display" class="timer-display">--:--</div>
-                </div>
+            <div class="quest-cell timer-cell clickable-cell" id="quest-accept-cell">
+                <strong id="quest-accept">Accept Quest</strong>
+                <div id="timer-display" class="timer-display" style="display:none;">--:--</div>
             </div>
-
-
-            <div class="quest-cell rationale-cell">
-                <h2 id="quest-rationale"></h2>
+            <div class="quest-cell rationale-cell clickable-cell" id="quest-rationale-cell">
+                <h2 id="quest-rationale">Rationale</h2>
             </div>
         </div>
 
-        <!-- Third row: Image, description, requirements -->
-         
+        <!-- Third row: Image | Description | Requirements -->
         <div class="quest-row">
             <div class="quest-cell image-cell">
                 <img id="quest-character" />
             </div>
-
             <div class="quest-cell description-cell">
                 <p id="quest-text"></p>
             </div>
-
             <div class="quest-cell requirements-cell">
                 <p id="quest-requirements"></p>
             </div>
         </div>
 
-        <!-- Fourth row: Rubric and prerequisites/leads tabs -->
+        <!-- Fourth row: Rubric | Prereq / Leads -->
         <div class="quest-row">
-            <div class="quest-cell rubric-cell">
-                <p id="quest-rubric"></p>
+            <div class="quest-cell rubric-cell clickable-cell" id="quest-rubric-cell">
+                <p id="quest-rubric">Rubric</p>
             </div>
-
-            
             <div class="quest-cell prereq-leads">
-                <!-- Tab buttons -->
                 <div class="tabs">
                     <button class="tab-button active" data-tab="prereq">Prerequisites (formative)</button>
                     <button class="tab-button" data-tab="leads">Leads To (Summative)</button>
                 </div>
-
-                <!-- Tab content -->
                 <div class="tab-content" id="tab-prereq">
-                    <ul id="quest-prereq-leads-prereq">
-                        <li>None</li>
-                    </ul>
+                    <ul id="quest-prereq-leads-prereq"><li>None</li></ul>
                 </div>
-
                 <div class="tab-content" id="tab-leads" style="display: none">
-                    <ul id="quest-prereq-leads-to">
-                        <li>None</li>
-                    </ul>
+                    <ul id="quest-prereq-leads-to"><li>None</li></ul>
                 </div>
             </div>
         </div>
 
-        <!-- Fifth row: Links, finished works and Reward -->
+        <!-- Fifth row: Links | Finished Work | Reward -->
         <div class="quest-row">
             <div class="quest-cell links-cell">
                 <ul id="quest-links"></ul>
             </div>
-            <div class="quest-cell work-cell" id="open-work-overlay">
-        <ul id="work-links"></ul>
-        <strong id="finished-work-btn" style="cursor: pointer;">Finished Work</strong>
-    </div>
+            <div class="quest-cell work-cell clickable-cell" id="open-work-overlay">
+                <ul id="work-links"></ul>
+                <strong id="finished-work-btn">Finished Work</strong>
+            </div>
             <div class="quest-cell reward-cell">
                 <strong>Reward</strong>
                 <p id="quest-reward"></p>
             </div>
-            </div>
         </div>
+    </div>
 </div>
-<!------------------------------------------- WORKS OVERLAY ------------------------------------------------------->
+<!------------------------------------------- WORK OVERLAY ------------------------------------------------------->
 <div id="work-overlay" class="work-overlay">
   <div class="overlay-content">
-    <!-- Close Button (optional but recommended) -->
+    <!-- Close Button -->
     <button class="close-overlay" type="button">×</button>
-    <!-- Photo Field -->
-    <div class="work-image-section">
-      <label for="work-image">Upload Photo</label>
-      <input type="file" id="work-image" name="work-image" accept="image/*">
-      <!-- Preview image (optional, useful later with JS) -->
-      <img id="image-preview" alt="Work preview">
+
+    <!-- ===================== UPLOAD ZONE (new) ===================== -->
+    <div class="work-upload-zone">
+
+      <div class="work-upload-title">Upload photo</div>
+
+      <div class="work-preview-wrap">
+        <img id="image-preview" alt="Work preview">
+      </div>
+
+      <!-- PDF status line: saved / just picked / hidden -->
+      <div class="work-pdf-status" id="work-pdf-status"></div>
+
+      <div class="work-upload-buttons">
+        <button type="button" id="upload-image-btn" class="work-btn work-btn-image">
+          Upload Image 📷
+        </button>
+        <button type="button" id="upload-pdf-btn" class="work-btn work-btn-pdf">
+          Upload PDF 📄
+        </button>
+      </div>
+
+      <div class="work-size-note">
+        Images and PDFs cannot be larger than 5 MB.
+      </div>
+
+      <!-- Hidden real file inputs (the buttons above trigger them) -->
+      <input type="file" id="work-image" name="work-image" accept="image/*" style="display:none;">
+      <input type="file" id="work-research-pdf" accept="application/pdf" style="display:none;">
+
     </div>
-    <button type="button" id="delete-work-image" class="delete-image-btn">Delete</button>
- <button type="button" class="save-work">Save</button>
+    <!-- =================== END UPLOAD ZONE =================== -->
 
-
-    <!-- Editable Fields -->
+    <!-- ===================== EDITABLE FIELDS (unchanged) ===================== -->
     <form class="work-details-form">
       <!-- First Line: Title / Size / Media -->
       <div class="work-main-info">
@@ -274,13 +359,37 @@
           <input type="text" id="work-media" name="work-media" placeholder="e.g. Acrylic on canvas">
         </div>
       </div>
+
       <!-- Second Line: Description -->
       <div class="field-group">
         <label for="work-description">Description</label>
-         <button type="button" class="help-btn" id="helpButton" aria-label="Description help">?</button>
-        <textarea id="work-description" name="work-description" rows="4" placeholder="Write a short description.No more than 60 words.."></textarea>
+        <button type="button" class="help-btn" id="helpButton" aria-label="Description help">?</button>
+        <textarea id="work-description" name="work-description" rows="4" placeholder="Write a short description. No more than 60 words."></textarea>
       </div>
     </form>
+    <!-- =================== END EDITABLE FIELDS =================== -->
+
+    <!-- ===================== ACTION BAR (new) ===================== -->
+    <div class="work-action-bar">
+      <div class="work-action-left">
+        <button type="button" id="delete-image-btn" class="work-btn work-btn-image" disabled>
+          Delete image 🗑️
+        </button>
+        <button type="button" id="delete-pdf-btn" class="work-btn work-btn-pdf" disabled>
+          Delete PDF 🗑️
+        </button>
+      </div>
+      <div class="work-action-right">
+        <button type="button" id="delete-all-btn" class="work-btn work-btn-danger" disabled>
+          Delete all
+        </button>
+        <button type="button" class="save-work work-btn work-btn-save" disabled>
+          Save
+        </button>
+      </div>
+    </div>
+    <!-- =================== END ACTION BAR =================== -->
+
   </div>
 </div>
 <!-------------------------------------- Fullscreen Image Viewer Overlay -------------------------------------->
@@ -345,6 +454,36 @@
     </div>
   </div>
 </div>
+<!-- ========================================= TREE OVERLAY ======================================== -->
+<div id="quest-tree-overlay">
+    <div id="quest-tree-panel">
+
+        <!-- Header -->
+        <div class="tree-header">
+            <div class="tree-tabs" role="tablist">
+                <button class="tree-tab-btn active" data-tree-tab="quest-tree" role="tab" aria-selected="true">
+                    Quest Progress Tree
+                </button>
+            </div>
+            <button id="close-quest-tree" class="tree-close-btn" aria-label="Close">✕</button>
+        </div>
+        <img id="tree-student-avatar"
+             class="tree-student-avatar"
+             src="profile.png"
+             alt="Student avatar">
+
+        <!-- Scrollable body -->
+        <div class="tree-body">
+            <div class="tree-tab-content" id="tree-tab-quest-tree">
+                <div id="tree-grid" class="tree-grid"><!-- Filled by JS --></div>
+                <div id="tree-free-strip" class="tree-free-strip">
+                    <div class="tree-free-title">Free Assignments</div>
+                    <div id="tree-free-list" class="tree-free-list"><!-- Filled by JS --></div>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
 <!------------------------------------------ GALLERY OVERLAY ------------------------------------------------------>
 <div id="gallery-overlay" class="quest-overlay" style="display:none;">
   <div id="gallery-box" class="quest-box gallery-box">
@@ -398,7 +537,7 @@
                     <input type="password" id="login-password" class="auth-input" placeholder="Password" />
                     <button id="login-submit-btn" class="auth-btn auth-btn-primary">Login</button>
                     <div class="auth-links-row">
-                        <p class="auth-link"><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+                        <p class="auth-link"><a href="ms-index.html">🌊 Middle School</a></p>
                         <p class="auth-link" id="create-profile-link">Create New Profile</p>
                     </div>
                     <p class="auth-link teacher-login-link">
@@ -445,26 +584,30 @@
 </div>
 <!--parchment sound-->
 <audio id="unroll-sound" src="unroll.m4a" preload="auto"></audio>
- <!-- Calendar Button -->
-<button id="calendar-btn" class="calendar-btn">📅 Calendar</button>
-<!-- Achievements Button -->
-<button id="achievements-btn" class="achievements-btn">🏆 Achievements</button>
 <!-------------------------------------------- ACHIEVEMENTS OVERLAY------------------------------------------------>
 <div id="achievements-overlay" class="quest-overlay">
   <div class="quest-box">
     <span id="close-achievements" class="close-btn">✖</span>
     <div class="achievements-tabs">
-      <button class="tab-button active" data-tab="completed">Completed Quests</button>
-      <button class="tab-button" data-tab="achievements">Achievements</button>
-      <button class="tab-button" data-tab="questlist">Quest List</button>
-      <button class="tab-button" data-tab="pathfinder">Pathfinder</button>
+        <button class="tab-button active" data-tab="achievements">Achievements</button>
+        <button class="tab-button" data-tab="resources">Resources</button>
+        <button class="tab-button" data-tab="mysterygift">Mystery Gift</button>
+        <button class="tab-button" data-tab="questlist">Quest List</button>
+        <button class="tab-button" data-tab="pathfinder">Pathfinder</button>
     </div>
-    <div class="tab-content" id="tab-completed">
-      <div id="completed-quests-grid" class="completed-grid"></div>
-    </div>
-    <div class="tab-content" id="tab-achievements" style="display:none;">
+    <div class="tab-content" id="tab-achievements">
       <div id="achievements-list"> 
       </div>
+    </div>
+    <div class="tab-content" id="tab-resources" style="display:none;">
+        <div id="resources-student-list" class="resources-student-list">
+            <div class="resources-student-empty">Loading…</div>
+        </div>
+    </div>
+    <div class="tab-content" id="tab-mysterygift" style="display:none;">
+        <div id="mystery-gift-list" class="mystery-gift-list">
+            <div class="mystery-gift-empty">Loading…</div>
+        </div>
     </div>
     <div class="tab-content" id="tab-questlist" style="display:none;">
       <!-- Filter Controls -->
@@ -515,100 +658,101 @@
     <div id="rubric-content"></div>
   </div>
 </div>
+<!-- Featured quests — lower-left floating panel -->
+<div id="featured-quests-panel" class="featured-quests-panel" aria-hidden="true"></div>
 <!------------------------------------------- Profile Button ------------------------------------------------------>
 <button id="profile-btn" class="profile-btn">
   <img src="profile.png" alt="Profile" />
+<!--  <img src="charimage/halloween-bat.gif" class="profile-bat" alt="" aria-hidden="true" />  <!--- Only during halloween---> 
+  <div class="exp-bar-wrap" id="exp-bar-wrap">
+    <div class="exp-bar">
+        <div class="exp-bar-fill" id="exp-bar-fill"></div>
+    </div>
+    <div class="exp-level" id="exp-level-text"></div>
+</div>
 </button>
 <!--------------------------------------------PROFILE OVERLAY------------------------------------------------------>
 <div id="profile-overlay" class="overlay" style="display:none;">
-    <div id="profile-popup" class="popup">
-        <h2 class="profile-title">Student's Profile</h2>
+    <div id="profile-popup" class="popup profile-popup-with-tabs">
         <button id="profile-close" class="close-btn">×</button>
-        <div class="profile-grid">
-          <!-- LEFT COLUMN -->
-            <div class="profile-left">
-                <div class="avatar-wrapper">
-                  <img id="student-avatar" src="profile.png" alt="avatar">
-                  <button id="change-avatar-btn" class="avatar-gear">⚙️</button>
-                </div>
-                <div id="student-name" class="student-name"></div>
-                                <div class="profile-teacher-name">
-                    Teacher: <span id="profile-teacher-name">—</span>
+
+        <!-- Vertical side tabs -->
+        <div class="profile-side-tabs" role="tablist">
+            <button class="profile-side-tab active" data-profile-tab="profile" role="tab" aria-selected="true">
+                Profile
+            </button>
+            <button class="profile-side-tab" data-profile-tab="completed" role="tab" aria-selected="false">
+                Completed Quests
+            </button>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="profile-tab-panes">
+
+            <!-- Pane: Profile (existing content, unchanged) -->
+            <div class="profile-tab-pane active" id="profile-tab-profile">
+                <h2 class="profile-title" id="profile-title">Student's Profile</h2>
+                <div class="profile-grid">
+                    <!-- LEFT COLUMN -->
+                    <div class="profile-left">
+                        <div class="avatar-wrapper">
+                            <img id="student-avatar" src="profile.png" alt="avatar">
+                            <button id="change-avatar-btn" class="avatar-gear">⚙️</button>
+                        </div>
+                        <div id="student-name" class="student-name"></div>
+                        <div class="profile-teacher-name">
+                            Teacher: <span id="profile-teacher-name">—</span>
+                        </div>
+                        <div class="profile-left">
+                            <div class="profile-action-buttons">
+                                <button id="logout-profile-btn" class="profile-btn-small logout-btn">🚪 Logout</button>
+                            </div>
+                        </div>
+                        <div class="profile-exp-block" id="profile-exp-block">
+                            <div class="profile-exp-label">Experience</div>
+                            <div class="profile-exp-bar-wrap" id="profile-exp-bar-wrap">
+                                <div class="profile-exp-level" id="profile-exp-level">Lv 0</div>
+                                <div class="profile-exp-bar-track">
+                                    <div class="profile-exp-bar-fill" id="profile-exp-bar-fill"></div>
                                 </div>
-                <div class="profile-left">  
-                 <div class="profile-action-buttons">
-                  <button id="logout-profile-btn" class="profile-btn-small logout-btn">🚪 Logout</button>
-                 </div>
+                                <div class="profile-exp-numbers" id="profile-exp-numbers">0 / 100</div>
+                            </div>
+                            <div class="profile-exp-total" id="profile-exp-total">0 EXP total</div>
+                        </div>
+                    </div>
+                    <!-- CENTER COLUMN -->
+                    <div class="profile-center" id="radar-chart-container">
+                        <canvas id="radar-chart"></canvas>
+                        <div id="radar-tooltip" class="radar-tooltip"></div>
+                    </div>
+                    <!-- RIGHT COLUMN — Badges -->
+                    <div class="profile-right">
+                        <div class="badge-title">
+                            <span class="filigree-left">⚜—————✧—————⚜</span>
+                            <span class="badge-title-text" id="badge-title">Artheim Art Badges</span>
+                            <span class="filigree-right">⚜—————✧—————⚜</span>
+                        </div>
+                        <div class="badge-container" id="badge-container"></div>
+                    </div>
                 </div>
-                <div class="profile-money">
-                <a href="#" id="profile-reward-link" class="money-link" >Reward:</a><span id="profile-total-coins" class="money-amount">0</span>
+            </div>
+
+            <!-- Pane: Completed Quests (moved from tree overlay) -->
+            <div class="profile-tab-pane" id="profile-tab-completed">
+                <div id="tree-completed-panel" class="tree-completed-panel">
+                    <div class="tree-completed-empty">Loading…</div>
                 </div>
             </div>
-          <!-- CENTER COLUMN -->
-            <div class="profile-center" id="radar-chart-container">
-             <canvas id="radar-chart"></canvas>
-             <div id="radar-tooltip" class="radar-tooltip"></div>
-            </div>
-          <!-- RIGHT COLUMN -->
-            <div class="profile-right">
-              <h3>Assessment</h3>
-            <h3>Standards/Domains/Objectives</h3>
-            <ul id="standards-list"></ul>
-            <!-- art standards - dynamically populated based on framework -->
-            <table id="standards-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Formative Grade</th>
-                        <th>Summative (MVP) Grade</th>
-                    </tr>
-                </thead>
-                <tbody id="standards-table-body">
-                    <tr><td colspan="3">Loading...</td></tr>
-                </tbody>
-            </table>
-            </div>
-            <!-- BADGE ROW - Full width below all columns -->
-            <div class="badge-row">
-              <div class="badge-title">
-                <span class="filigree-left">⚜—————✧—————⚜</span>
-                <span class="badge-title-text" id="badge-title">Artheim Art Badges</span>
-                <span class="filigree-right">⚜—————✧—————⚜</span>
-              </div>
-              <div class="badge-container" id="badge-container">
-              </div>
-            </div>
+
         </div>
     </div>
-</div>
-<!------------------------------------- Rewards by Standard Overlay ----------------------------------------------->
-<div id="rewards-overlay" class="rewards-overlay">
-    <div id="rewards-box">
-        <span id="close-rewards">&times;</span>
-        <h2 id="rewards-title">Rewards by Standard</h2>
-        
-        <div id="rewards-total-summary"></div>
-        
-        <table class="rewards-table">
-            <thead>
-                <tr>
-                    <th>Standard Code</th>
-            <th>Standard Description</th>
-            <th>Earned</th>
-            <th>Deducted</th>
-            <th>Net Available</th>
-            <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="rewards-table-body">
-                <!-- Will be populated by JavaScript -->
-            </tbody>
-        </table>
-        
-        <div style="text-align: center; margin-top: 15px; color: #aaddff; font-size: 0.9em;">
-            <em>Rewards are calculated as 10 💰 per grade point earned</em>
-        </div>
-    </div>
+</div><!------------------------------------- Exp Breakdown Overlay ----------------------------------------------->
+<div id="rewards-overlay" style="display:none;">
+  <div class="exp-breakdown-box">
+    <span id="close-rewards" class="close-btn">✖</span>
+    <h2 class="exp-breakdown-title">EXP Breakdown</h2>
+    <div id="rewards-content" class="exp-breakdown-content"></div>
+  </div>
 </div>
 <!-------------------------- Restriction Popup (One Quest at a Time) ----------------------------------------------->
 <div id="restriction-popup" class="restriction-popup" style="display: none;">
@@ -638,19 +782,18 @@
         <button class="restriction-close" onclick="closeAcceptQuestRestrictionPopup()">OK</button>
     </div>
 </div>
-<!--------------------------------- New Quest Announcement Overlay ------------------------------------------------>
-<div id="new-quest-overlay" class="new-quest-overlay" style="display: none;">
-    <div id="new-quest-box">
-        <div class="new-quest-header">
-            <h2>✨ New Quests Added! ✨</h2>
-            <button id="close-new-quest" class="close-new-quest">×</button>
-        </div>
-        <div class="new-quest-content">
-            <p>New adventures await in Artheim:</p>
-            <ul id="new-quest-list"></ul>
-        </div>
-        <div class="new-quest-footer">
-            <button id="new-quest-continue" class="new-quest-btn">Continue Journey</button>
+<!--------------------------------------------Resources Popup ------------------------------------------------------>
+<div id="quest-resource-reminder-popup" style="display:none;">
+    <div class="resource-reminder-box">
+        <h3>📚 Resource Reminder</h3>
+        <p>
+            This quest includes the <strong>Independent Art Research</strong> standard.
+            Don't forget to check the <strong>Resources</strong> tab in your Achievements
+            overlay — your teacher may have shared reference material that can help you.
+        </p>
+        <div class="resource-reminder-actions">
+            <button id="quest-resource-reminder-dismiss" class="resource-reminder-btn">Got it</button>
+            <button id="quest-resource-reminder-open" class="resource-reminder-btn primary">Open Resources</button>
         </div>
     </div>
 </div>
@@ -739,25 +882,49 @@
         </div>
     </div>
 </div>
-<!-- Student Work Details Modal (for contest artwork) -->
+<!--------------------------------- Student Work Details Modal (for contest artwork) ------------------------------->
 <div id="teacher-work-modal" class="quest-overlay" style="display: none;">
     <div class="quest-box" style="max-width: 500px; width: 90%;">
         <span class="close-btn" style="position: absolute; top: 15px; right: 20px;">✖</span>
         <div id="teacher-work-content"></div>
     </div>
 </div>
-<!-- Forgot Password Modal (Student) -->
-<div id="forgot-password-modal" class="forgot-password-modal">
-    <div class="forgot-password-content">
-        <h3>Reset Password</h3>
-        <p>Enter your email address and we'll send you a link to reset your password.</p>
-        <input type="email" id="reset-email-input" class="forgot-password-input" placeholder="Your email address">
-        <div class="forgot-password-buttons">
-            <button id="reset-cancel-btn" class="forgot-password-cancel">Cancel</button>
-            <button id="reset-submit-btn" class="forgot-password-submit">Send Reset Link</button>
+<!-------------------------------------- Gift reveal modal (populated by JS) ------------------------------------->
+<div id="gift-reveal-overlay" class="gift-reveal-overlay" aria-hidden="true">
+    <div class="gift-reveal-stage">
+        <div class="gift-reveal-flash" id="gift-reveal-flash"></div>
+
+        <div class="gift-reveal-box-wrap" id="gift-reveal-box-wrap">
+            <img id="gift-reveal-box-img"
+                 class="gift-reveal-box-img"
+                 src="charimage/gift-box.png"
+                 alt="Gift box"
+                 draggable="false">
         </div>
-        <div id="reset-message" class="forgot-password-message"></div>
+
+        <div class="gift-reveal-result" id="gift-reveal-result" style="display: none;">
+            <img id="gift-reveal-gift-img"
+                 class="gift-reveal-gift-img"
+                 src=""
+                 alt="Your gift"
+                 draggable="false">
+            <div class="gift-reveal-title">Congratulations!</div>
+            <div class="gift-reveal-message" id="gift-reveal-message"></div>
+            <button class="gift-reveal-close-btn" id="gift-reveal-close-btn">Close</button>
+        </div>
+
+        <div class="gift-reveal-hint" id="gift-reveal-hint">Click the box to open your gift!</div>
     </div>
+
+    <div class="gift-reveal-confetti" id="gift-reveal-confetti"></div>
+</div>
+<!------------------------------------------- Hotspot hover tooltip ---------------------------------------------->
+<div id="hotspot-tooltip" class="hotspot-tooltip" role="tooltip" aria-hidden="true">
+    <div class="hotspot-tooltip-title">
+        <span class="hotspot-tooltip-title-text"></span>
+        <span class="hotspot-tooltip-check" style="display: none;">✓</span>
+    </div>
+    <div class="hotspot-tooltip-path"></div>
 </div>
 <!------------------------------------ Supabase client library ---------------------------------------------------->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -768,6 +935,7 @@
     window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     console.log('Supabase initialized:', window.supabase);
 </script>
-<script src="script.js"></script>
+<script src="script.js?v=20262311"></script>
 </body>
 </html>
+
